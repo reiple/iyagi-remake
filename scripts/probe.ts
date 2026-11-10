@@ -1,0 +1,1 @@
+import {Connection} from '../src/core/connection';const c=new Connection();let text='';c.on('data',s=>text+=s);c.on('status',s=>console.log(s));c.connect('xmud.ddnsfree.com',6666,'cp949');setTimeout(()=>{console.log(text.slice(0,4000));c.disconnect();},5000);

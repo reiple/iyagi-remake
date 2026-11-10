@@ -1,0 +1,44 @@
+{
+  "name": "iyagi-mud",
+  "version": "0.2.0",
+  "private": true,
+  "description": "퇴마요새 머드 클라이언트",
+  "author": "Iyagi Mud contributors",
+  "main": "dist/main.cjs",
+  "scripts": {
+    "test": "tsx --test tests/*.test.ts",
+    "check": "tsc --noEmit",
+    "build": "node scripts/build.mjs",
+    "start": "electron .",
+    "pack": "electron-builder --win dir --x64"
+  },
+  "build": {
+    "appId": "local.iyagi.mud",
+    "productName": "Iyagi Mud",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false
+    }
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "0.11.0",
+    "@xterm/xterm": "6.0.0",
+    "iconv-lite": "0.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "electron": "45.2.3",
+    "electron-builder": "26.18.0",
+    "esbuild": "0.28.2",
+    "playwright": "1.65.0",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}

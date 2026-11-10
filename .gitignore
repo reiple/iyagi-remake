@@ -1,0 +1,14 @@
+node_modules/
+dist/
+release/
+.tools/
+.test-profile/
+.ui-test-profile/
+
+release-v0.2/
+.script-ui-profile/
+
+# Local credentials and logs
+.env
+.env.*
+*.log

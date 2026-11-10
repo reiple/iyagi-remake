@@ -1,0 +1,5 @@
+export type Transmission={text:string}|{byte:number};
+export function expandTransmit(source:string,now=new Date()):Transmission[]{
+ if(source.length>65536)throw Error('송신 길이 초과');const actions:Transmission[]=[];let text='';const flush=()=>{if(text){actions.push({text});text='';}};
+ for(let i=0;i<source.length;i++){const c=source[i];if(c==='|'){text+='\r\n';continue;}if(c==='\x9b'){flush();actions.push({byte:155});continue;}if(c!=='$'){text+=c;continue;}const next=source[++i];if(next==='$')text+='$';else if(next==='D')text+=now.toLocaleDateString('sv-SE');else if(next==='T')text+=now.toTimeString().slice(0,8);else if(next==='#'){const m=source.slice(i+1).match(/^\d+/);if(!m)throw Error('바이트 번호가 필요합니다.');const byte=Number(m[0]);if(byte>255)throw Error('바이트 범위는 0~255입니다.');flush();actions.push({byte});i+=m[0].length;}else throw Error('지원하지 않는 송신 확장: $'+(next||''));if(actions.length>4096)throw Error('송신 액션 한도 초과');}flush();if(actions.length>4096)throw Error("송신 액션 한도 초과");return actions;
+}

@@ -1,0 +1,1218 @@
+[
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\호수사번테스트.scs",
+    "extension": ".scs",
+    "bytes": 9311,
+    "sha256": "D55EE822CDCF1BB4F5BA80628991B20DCE8C1F2B5C31EF0D02BD510C73AB456C",
+    "encoding": 0,
+    "score": 200,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\done\\산존.scs",
+    "extension": ".scs",
+    "bytes": 11729,
+    "sha256": "8A464544B924BD36D1A6791AEB6E5C2B14681BE490D99A44F69D30DBA433BC0F",
+    "encoding": 0,
+    "score": 237,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\done\\호수.scs",
+    "extension": ".scs",
+    "bytes": 10085,
+    "sha256": "586761D2D5E0EF968143C01C2A6FED0AD7AD60E7473CDE0CB89AEC25436514D4",
+    "encoding": 0,
+    "score": 213,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\백금사냥_주술사 test.scs",
+    "extension": ".scs",
+    "bytes": 101328,
+    "sha256": "2B6D0B305C8DBF189AB49CEE542120EF9ECDBE610A583956DC81D0ABB42C6075",
+    "encoding": 1361,
+    "score": 5540,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\백금사냥_주술사.scs",
+    "extension": ".scs",
+    "bytes": 6029,
+    "sha256": "CADACB703B9A653D7B6BA771EE6D0ED8EFF2361212D71827BE5C302CBD7FB0A3",
+    "encoding": 1361,
+    "score": 545,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\정령계초보3지역.scs",
+    "extension": ".scs",
+    "bytes": 16377,
+    "sha256": "CFD1E6F21FB3DEC8D76326B01861E3F1ECBA25265A9C1F0B976C7054F0D5F58B",
+    "encoding": 0,
+    "score": 296,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\폐허(연화결).scs",
+    "extension": ".scs",
+    "bytes": 7112,
+    "sha256": "78160201BC610D8FD969770C1EFC9F2442AA1A191D9463F702ACD3AEE8923602",
+    "encoding": 1361,
+    "score": 270,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\현철사냥.scs",
+    "extension": ".scs",
+    "bytes": 6677,
+    "sha256": "66ED6B345483727FC8A065C69741CEC47F504F9565AC42DF00B8EA3EDDA7F3D6",
+    "encoding": 1361,
+    "score": 680,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\[정령] 물광산흙.scs",
+    "extension": ".scs",
+    "bytes": 8938,
+    "sha256": "2EAF7F5FFB85E12907766B46B26875442ED7496AE39701271743C8EB5129EA88",
+    "encoding": 1361,
+    "score": 290,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 루비-오닉스(경험치모으기).scs",
+    "extension": ".scs",
+    "bytes": 5510,
+    "sha256": "69A3D7FE1D2C81D0BC7A6C205970D39D7D457E96A709E6A4C1122BA7FFE6F9FC",
+    "encoding": 1361,
+    "score": 230,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오-경험치위주(렙따케릭용).scs",
+    "extension": ".scs",
+    "bytes": 7282,
+    "sha256": "AE7D2C626F754774B3606D25FE081073EB854E43AF87B7D91BB4006AE9E74FBA",
+    "encoding": 1361,
+    "score": 325,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오-성-수정.scs",
+    "extension": ".scs",
+    "bytes": 14113,
+    "sha256": "E251930DBD10899090C95F297E571FA6F32AEC26B051BCA83A2BEC84556EEE90",
+    "encoding": 0,
+    "score": 243,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오뇌격장(하).scs",
+    "extension": ".scs",
+    "bytes": 10702,
+    "sha256": "3E1163EB186820A5E50F4F216D67030827E2E2ABDF34E87249F218D1203959B8",
+    "encoding": 1361,
+    "score": 330,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워 6~4 완벽버전(하).scs",
+    "extension": ".scs",
+    "bytes": 6409,
+    "sha256": "87F9AD44FE9DBA68710A08FFAAE8EFD9AF1D1CF913D83C7F4A2BC3FBB0748398",
+    "encoding": 1361,
+    "score": 365,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워 6~4 제왕.scs",
+    "extension": ".scs",
+    "bytes": 5865,
+    "sha256": "F5F0AF925CE3BF4EE0014938B5AF7B512AF81170D5877F7A94F7B75382F647B2",
+    "encoding": 1361,
+    "score": 365,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-4 뇌격장.scs",
+    "extension": ".scs",
+    "bytes": 5850,
+    "sha256": "098E9B2F250D5F73F8BA76ED56A5933ED0C3014DE7F15A6110E843C7353005AA",
+    "encoding": 1361,
+    "score": 205,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-4 제왕.scs",
+    "extension": ".scs",
+    "bytes": 5480,
+    "sha256": "DD792D5F750DDCE53724AFB90261C1B535290AAF8B54600BF3E03E2B2D1BBC83",
+    "encoding": 1361,
+    "score": 205,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-5 - 뇌격장.scs",
+    "extension": ".scs",
+    "bytes": 6664,
+    "sha256": "1D87113B2481B5177C8A6EDBDEB8B6FA710413932E4A2AE2532AB18CEF13B179",
+    "encoding": 1361,
+    "score": 365,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-5 - 제왕.scs",
+    "extension": ".scs",
+    "bytes": 6341,
+    "sha256": "4237E679E88AE0C277D4EC05AB889A09760E116696F893692DD04EABEBEAA441",
+    "encoding": 1361,
+    "score": 365,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 환몽지대(불제자용) 그룹대화.scs",
+    "extension": ".scs",
+    "bytes": 5122,
+    "sha256": "B0701534F307BA050C8AEB509A88F8FEA25F4714BEAEA18617AF396FB6BF1FDB",
+    "encoding": 1361,
+    "score": 310,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(블러드 58).scs",
+    "extension": ".scs",
+    "bytes": 4799,
+    "sha256": "78FACE1D9AB5D916190752E46F0B21C2A92F57E904ED1F35FEA9AA605A47B834",
+    "encoding": 1361,
+    "score": 315,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(블러드용).scs",
+    "extension": ".scs",
+    "bytes": 8821,
+    "sha256": "C82823D9C898060E1F856FC136ECEF44C0659321DAB7192E4145072D9DF6EBE4",
+    "encoding": 1361,
+    "score": 315,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(성).scs",
+    "extension": ".scs",
+    "bytes": 4793,
+    "sha256": "34AC5F9B9CA5A35A6F534955BB62D4F474E6B579C747E0F0F2E798601D23F1D5",
+    "encoding": 1361,
+    "score": 315,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-1.scs",
+    "extension": ".scs",
+    "bytes": 13745,
+    "sha256": "579553B0D6A48ECF9C45FA64F57E80ED8D8C55ED0009F08E855CA51FA801A8B4",
+    "encoding": 0,
+    "score": 339,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-2.scs",
+    "extension": ".scs",
+    "bytes": 9173,
+    "sha256": "864B0A4C7B20E3B0BCAC52657AD3804438E9374A6357D4BD3E70AA7F0543AAA8",
+    "encoding": 0,
+    "score": 232,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-3.scs",
+    "extension": ".scs",
+    "bytes": 18685,
+    "sha256": "5575E2F072227B820D345E07115B1A572841F26BC4AE40B4585D5AA2FC341531",
+    "encoding": 0,
+    "score": 420,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-4.scs",
+    "extension": ".scs",
+    "bytes": 14909,
+    "sha256": "D6BA271F1F4A184D774B550BC1DBC90651B8E8493BCBE2D707B1C8B4A770003A",
+    "encoding": 0,
+    "score": 363,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-5_나무뿌리잘라.scs",
+    "extension": ".scs",
+    "bytes": 6487,
+    "sha256": "F82C0E0F164040403A2FBE7B0466972FEA38AEA952E2CBE543196BE9BC330E39",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-5_측백산장.scs",
+    "extension": ".scs",
+    "bytes": 8467,
+    "sha256": "B5744EF37FCD8142BCD15FDEDE5858B2BC751703B18DBCCF4351DCEC80BA6BE6",
+    "encoding": 0,
+    "score": 203,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\2_1.scs",
+    "extension": ".scs",
+    "bytes": 26349,
+    "sha256": "BA6D4F00B033C88754B1E178CB611A9DEF21A049E0DFC5CADF8F26D029C4C384",
+    "encoding": 1361,
+    "score": 205,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\2-1.scs",
+    "extension": ".scs",
+    "bytes": 26004,
+    "sha256": "D80A8DE42CD9364DEC7F76029549E77DC3C8434CFFF60E54EF4720744963410A",
+    "encoding": 1361,
+    "score": 170,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\2-2.scs",
+    "extension": ".scs",
+    "bytes": 16917,
+    "sha256": "77CF09EBA51A84141451A7A8B9F16A51AD142E80C30F35DFA1EF07BA9D67B784",
+    "encoding": 0,
+    "score": 400,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\2-3.scs",
+    "extension": ".scs",
+    "bytes": 22845,
+    "sha256": "DADC4EAFD8A6716CDF271B46B05BC1862FDCAFF2097957B90C2664D7C405FBED",
+    "encoding": 0,
+    "score": 544,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\3-1 - 용잡기.scs",
+    "extension": ".scs",
+    "bytes": 22273,
+    "sha256": "050547F716DE6AA8E612DC005C85F97DA27F2245572203590B81CB9FBD7D311C",
+    "encoding": 0,
+    "score": 508,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\3-1.scs",
+    "extension": ".scs",
+    "bytes": 22273,
+    "sha256": "050547F716DE6AA8E612DC005C85F97DA27F2245572203590B81CB9FBD7D311C",
+    "encoding": 0,
+    "score": 508,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\3-2.scs",
+    "extension": ".scs",
+    "bytes": 12859,
+    "sha256": "190C94DF01B301949A3BB6CD0323543FB25342363D62ABC00816711FFEFBD7F4",
+    "encoding": 0,
+    "score": 329,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\3-3.scs",
+    "extension": ".scs",
+    "bytes": 12967,
+    "sha256": "C8AD21D19552A82F162F878B76E1F459FFE201425B7634230EDBD77DB7888590",
+    "encoding": 0,
+    "score": 329,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\그린-오닉스-MadeBy퇴마선생.scs",
+    "extension": ".scs",
+    "bytes": 15177,
+    "sha256": "C2BA84D2237BF529DA1B82D439AD69073AB6142B605CDC6C382C74E1AFF29168",
+    "encoding": 0,
+    "score": 279,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\뉴카리오-경험치위주(밥수저).scs",
+    "extension": ".scs",
+    "bytes": 7489,
+    "sha256": "E90AA2FA7C13E97DDFFCF3E80A8291F0004A37F21E34B737175DFA062C4E4809",
+    "encoding": 1361,
+    "score": 325,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\뉴카타2층(밥수저).scs",
+    "extension": ".scs",
+    "bytes": 10593,
+    "sha256": "2AD35070297A8FAB80524ED9E1CC8FCFB0F269DCBC6D577E201F676DD5178E4E",
+    "encoding": 0,
+    "score": 212,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤(그린-블랙).scs",
+    "extension": ".scs",
+    "bytes": 9749,
+    "sha256": "789F2E3F52AE117201035181FBEC6175A10A01D41989A3588498B24ACFE43D10",
+    "encoding": 0,
+    "score": 177,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤(그린-실버).scs",
+    "extension": ".scs",
+    "bytes": 10679,
+    "sha256": "B7F6390284C4D2E7ECB686310F0C2DBC47016BF455F0DEC02AFEF0879C69BB58",
+    "encoding": 0,
+    "score": 191,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤지역(그린-골드만).scs",
+    "extension": ".scs",
+    "bytes": 11469,
+    "sha256": "13AE8694E4C4612150B0674D80AA36A345B29D1D7B7351939F0BA1B10B745D28",
+    "encoding": 0,
+    "score": 207,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤지역(그린-다이아까지).scs",
+    "extension": ".scs",
+    "bytes": 15585,
+    "sha256": "E9DEFCC874C3EE5DC369C4B4E29CCCB473530115CFB81870E82BD5E2771396DE",
+    "encoding": 0,
+    "score": 259,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\루비-오닉스.scs",
+    "extension": ".scs",
+    "bytes": 10449,
+    "sha256": "F12656BA3E4A9459D076704C4E9CB46292B4D57FD64A98BE222C453C25A4F12A",
+    "encoding": 0,
+    "score": 180,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산불제자.scs",
+    "extension": ".scs",
+    "bytes": 4208,
+    "sha256": "038FB8AF643C38B6C298A09947AB780B3FCD7B1A6BD005C90E3DC055B8913626",
+    "encoding": 1361,
+    "score": 310,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산주술사-1.scs",
+    "extension": ".scs",
+    "bytes": 15465,
+    "sha256": "05C3AF241679DB8B4BAAD7C48EA894B5522CB8FDD44C03681A116E26635D5B50",
+    "encoding": 0,
+    "score": 290,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산주술사.scs",
+    "extension": ".scs",
+    "bytes": 15465,
+    "sha256": "FEE3A747AE17E7BCBD5DF38FDFE13999A1D19B989ED19E7F6798140E9855DFFF",
+    "encoding": 0,
+    "score": 290,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\버려진+논+by+델피에로.scs",
+    "extension": ".scs",
+    "bytes": 8587,
+    "sha256": "6575ABC5983CFCF76EFD20BDCB1266765CB8395EDA1961D781B22C23186B3B6D",
+    "encoding": 0,
+    "score": 182,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\부서진+빌딩+by+델피에로.scs",
+    "extension": ".scs",
+    "bytes": 5627,
+    "sha256": "F69E6066171B42DE70F62FF022AEC2392B46D16475DADBEA7601DC7B40472745",
+    "encoding": 0,
+    "score": 131,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\산촌+by+델피에로.scs",
+    "extension": ".scs",
+    "bytes": 4125,
+    "sha256": "7282647EA62D5EC27E2CDB5F0F1D08A04A2C5FBB459E27A3CD83F13ADEC83FAB",
+    "encoding": 1361,
+    "score": 300,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\수저의카리오수정판(무한돌리기좋음).scs",
+    "extension": ".scs",
+    "bytes": 10936,
+    "sha256": "4A9F7319FE1FAB8FD93F956129C03FB6F25901B6D07DEF7407433F2CE699A1FC",
+    "encoding": 1361,
+    "score": 315,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\초보존Re.scs",
+    "extension": ".scs",
+    "bytes": 294570,
+    "sha256": "44964A4C673CBF80DBD451EFD47D7044EC4B45D4CE7566DF752C426C04852593",
+    "encoding": 1361,
+    "score": 16545,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타1층-멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 15305,
+    "sha256": "CC88EC676BF03046473000411E67F52A666AE568150C43D69AB5C621BDEEA345",
+    "encoding": 0,
+    "score": 277,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타1층-휘안금술.scs",
+    "extension": ".scs",
+    "bytes": 15635,
+    "sha256": "842F08CC4B459F2A137F724CF508FB1BD196BBD90B5076336D44E22BE7FFEF77",
+    "encoding": 0,
+    "score": 287,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층(초입시작)-백화난무.scs",
+    "extension": ".scs",
+    "bytes": 11105,
+    "sha256": "A3C1269CCBD5DE01225EE4434088D773D666ED94E715652B9D370FCEE3F9E701",
+    "encoding": 0,
+    "score": 219,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층불제자 수정.scs",
+    "extension": ".scs",
+    "bytes": 5903,
+    "sha256": "32C88E37ECB4BD58EC2C6B6D5FF22149A298B96F740E0AF5A549164C46F57249",
+    "encoding": 1361,
+    "score": 360,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층주술사.scs",
+    "extension": ".scs",
+    "bytes": 11685,
+    "sha256": "66C203357C8494B06EB3145E96B593CE9613EB3A0BEFB1F1AB68A240D1A3957A",
+    "encoding": 0,
+    "score": 236,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타콤브1층(사번)-페이.SCs",
+    "extension": ".scs",
+    "bytes": 7875,
+    "sha256": "AF28AE5766C7297C6E034E5E9A059D2B95233BAC0D1F45426901B094F4B66620",
+    "encoding": -1,
+    "score": 30,
+    "binary": true,
+    "format": "SCF binary with SCS extension"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\타워1-5.scs",
+    "extension": ".scs",
+    "bytes": 13611,
+    "sha256": "478F196CA206C7C1BFA7319771A704AB474BA569EDBCC5BAB60BBE952161E471",
+    "encoding": 0,
+    "score": 243,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\파사궁극카리오.scs",
+    "extension": ".scs",
+    "bytes": 20925,
+    "sha256": "66DFF628FDB69065BABF41B421C791DD254AA5DA3D294041AD320B4F0D674B57",
+    "encoding": 0,
+    "score": 334,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲.scs",
+    "extension": ".scs",
+    "bytes": 14265,
+    "sha256": "D4CBFE09EDD4FF18FA1A7AE1807164864DA470503044C6FCD7FDD051096F946F",
+    "encoding": 0,
+    "score": 276,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲물.scs",
+    "extension": ".scs",
+    "bytes": 8840,
+    "sha256": "E130F5E4C9752B904EC82318C12DF250C6A3F6B617DCFF713879369A6BE0093C",
+    "encoding": 1361,
+    "score": 295,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲물광산흙 - 복사본.scs",
+    "extension": ".scs",
+    "bytes": 13706,
+    "sha256": "90BB86F481D483A846E1AA020F331BA103A660BE049C9FB3E852B022E1664DDD",
+    "encoding": 1361,
+    "score": 290,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲물광산흙.scs",
+    "extension": ".scs",
+    "bytes": 13706,
+    "sha256": "90BB86F481D483A846E1AA020F331BA103A660BE049C9FB3E852B022E1664DDD",
+    "encoding": 1361,
+    "score": 290,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\환몽지대(백화난무).scs",
+    "extension": ".scs",
+    "bytes": 4716,
+    "sha256": "A9B7CD057C02FE6BB3CA19E81DE11B0E72130EF7C5B13C6D7EBE6B11B6FE7520",
+    "encoding": 1361,
+    "score": 310,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\환몽지대(불제자용).scs",
+    "extension": ".scs",
+    "bytes": 5126,
+    "sha256": "416D3DDE5540893E1A1D258A8737FDAB0D16EF9FB54FE1B9DE3B30F43958B93E",
+    "encoding": 1361,
+    "score": 310,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-1.scs",
+    "extension": ".scs",
+    "bytes": 13749,
+    "sha256": "99BBF08A06E9A489EBC9F6D7A08E49D8603F3CA1FC96BE65F4BD292EECAA0620",
+    "encoding": 0,
+    "score": 339,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-2.scs",
+    "extension": ".scs",
+    "bytes": 9175,
+    "sha256": "5A728BC5470E0E2F93FE5C5BD40F1E4E2949973CDBE27286868F6F83D0C10C3E",
+    "encoding": 0,
+    "score": 232,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-3.scs",
+    "extension": ".scs",
+    "bytes": 18685,
+    "sha256": "5575E2F072227B820D345E07115B1A572841F26BC4AE40B4585D5AA2FC341531",
+    "encoding": 0,
+    "score": 420,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-4.scs",
+    "extension": ".scs",
+    "bytes": 14909,
+    "sha256": "D6BA271F1F4A184D774B550BC1DBC90651B8E8493BCBE2D707B1C8B4A770003A",
+    "encoding": 0,
+    "score": 363,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-5_나무뿌리잘라.scs",
+    "extension": ".scs",
+    "bytes": 6487,
+    "sha256": "F82C0E0F164040403A2FBE7B0466972FEA38AEA952E2CBE543196BE9BC330E39",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-5_측백산장.scs",
+    "extension": ".scs",
+    "bytes": 4087,
+    "sha256": "39653534B63F6B22416890AC47CA9105FA8A2EBDD40880954C511A48DECF1A0A",
+    "encoding": 1361,
+    "score": 490,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-1.scs",
+    "extension": ".scs",
+    "bytes": 26004,
+    "sha256": "D80A8DE42CD9364DEC7F76029549E77DC3C8434CFFF60E54EF4720744963410A",
+    "encoding": 1361,
+    "score": 170,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-2.scs",
+    "extension": ".scs",
+    "bytes": 16917,
+    "sha256": "77CF09EBA51A84141451A7A8B9F16A51AD142E80C30F35DFA1EF07BA9D67B784",
+    "encoding": 0,
+    "score": 400,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-3.scs",
+    "extension": ".scs",
+    "bytes": 22845,
+    "sha256": "DADC4EAFD8A6716CDF271B46B05BC1862FDCAFF2097957B90C2664D7C405FBED",
+    "encoding": 0,
+    "score": 544,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-1.scs",
+    "extension": ".scs",
+    "bytes": 9816,
+    "sha256": "56694460280AF74DBB8D264C662127CDE47F6A7D4364C64E60EC6923D09F1513",
+    "encoding": 1361,
+    "score": 270,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-2.scs",
+    "extension": ".scs",
+    "bytes": 12859,
+    "sha256": "190C94DF01B301949A3BB6CD0323543FB25342363D62ABC00816711FFEFBD7F4",
+    "encoding": 0,
+    "score": 329,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-3.scs",
+    "extension": ".scs",
+    "bytes": 12967,
+    "sha256": "C8AD21D19552A82F162F878B76E1F459FFE201425B7634230EDBD77DB7888590",
+    "encoding": 0,
+    "score": 329,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_도목검_0번.scs",
+    "extension": ".scs",
+    "bytes": 1987,
+    "sha256": "A8E7EA67091678E6DDF8F16B693E343D0610808AEDC32809362B77B2F7948C4D",
+    "encoding": 1361,
+    "score": 35,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_도목검.scs",
+    "extension": ".scs",
+    "bytes": 2013,
+    "sha256": "E74B0F22D786811B8CCE48DB19F64491AD784ABE9C93D855E88A85D842FDF48B",
+    "encoding": 1361,
+    "score": 35,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_수정.scs",
+    "extension": ".scs",
+    "bytes": 1885,
+    "sha256": "F46CDB03B06367EA96B8EB94124A3D25579A79B2FF05C9C69256A1D842B48F9A",
+    "encoding": 1361,
+    "score": 35,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터.scs",
+    "extension": ".scs",
+    "bytes": 3843,
+    "sha256": "3375DD8CA14529300DF7B68B21A7757792A6E8F7F0D81DA695953E0A1425AD7F",
+    "encoding": 0,
+    "score": 79,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장_정비.scs",
+    "extension": ".scs",
+    "bytes": 11691,
+    "sha256": "5BB40335F725CA325F4A2A91A49073CA9278A3A702BDC8B2FBF8969DCF8BC1B1",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터_구리목탁.scs",
+    "extension": ".scs",
+    "bytes": 11672,
+    "sha256": "CE7AF5BB7513046D58026920786CE6CFE48C5B428C2EB407002D84BC069234E5",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터_구리목탁정비.scs",
+    "extension": ".scs",
+    "bytes": 11690,
+    "sha256": "574440C34AFB2018B6B348A476177F3AF03EEA12537B085366436982353E6BBC",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터_무기정비.scs",
+    "extension": ".scs",
+    "bytes": 11690,
+    "sha256": "574440C34AFB2018B6B348A476177F3AF03EEA12537B085366436982353E6BBC",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터.scs",
+    "extension": ".scs",
+    "bytes": 5483,
+    "sha256": "34EAABCA6B3C7116701FCFB70A7BBD4A25609EC230CC730DC634883CC6CFE4DD",
+    "encoding": 0,
+    "score": 117,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(50)폐가촌_구리마녀제외.scs",
+    "extension": ".scs",
+    "bytes": 3612,
+    "sha256": "C4EC80D53BF35D9F26ABD489155BE73CA577D893E6454AF5196D36FBDC6544B6",
+    "encoding": 1361,
+    "score": 40,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\(75)폐가촌_구리마녀포함.scs",
+    "extension": ".scs",
+    "bytes": 7587,
+    "sha256": "E7B683879A0D8A4FA6674F059E8DC18151542183CC02B283536460E4899DAF2B",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\18_초보지역_광장_정비_기술.scs",
+    "extension": ".scs",
+    "bytes": 11691,
+    "sha256": "5BB40335F725CA325F4A2A91A49073CA9278A3A702BDC8B2FBF8969DCF8BC1B1",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\18_초보지역_불제자_광장정비기술.scs",
+    "extension": ".scs",
+    "bytes": 12698,
+    "sha256": "E542FB88A473B7257EC0D344EBCA316EBD9EABB8560DFD2BCE29304BB346917B",
+    "encoding": 1361,
+    "score": 1025,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\18_초보지역_주술사_광장정비기술.scs",
+    "extension": ".scs",
+    "bytes": 12622,
+    "sha256": "3D1D8F8CA187E51AF1D76B0FD1499012EB66AFE895BD3E95836C4AB3CB7F4871",
+    "encoding": 1361,
+    "score": 1010,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\50_폐가촌(마녀제외)_불제자.scs",
+    "extension": ".scs",
+    "bytes": 13608,
+    "sha256": "A85D848FA9171D8A9D7880CE4B51062FF0D39D0D4632996DC837FF04130F594F",
+    "encoding": 1361,
+    "score": 1035,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\50_폐가촌(마녀제외)_주술사.scs",
+    "extension": ".scs",
+    "bytes": 13608,
+    "sha256": "3AD7D6F7C1530573692D75EADC8C35845EDD0F3835451DEFA84FA45B1DA127B5",
+    "encoding": 1361,
+    "score": 1035,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\공격하는몹이름찾기.scs",
+    "extension": ".scs",
+    "bytes": 11672,
+    "sha256": "CE7AF5BB7513046D58026920786CE6CFE48C5B428C2EB407002D84BC069234E5",
+    "encoding": 1361,
+    "score": 910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\구리덩이구하기.scs",
+    "extension": ".scs",
+    "bytes": 9472,
+    "sha256": "9D8B6FA40C115FD156643FB6A788F162C5CFD61BA0B80DD39F16FE08F3CB07AB",
+    "encoding": 949,
+    "score": 910,
+    "format": "text cp949"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\구리덩이파.scs",
+    "extension": ".scs",
+    "bytes": 864,
+    "sha256": "AA41DC40637114250E5111335B132EA6FFCBE9C0BDF3928AD237937E4195AF44",
+    "encoding": 1361,
+    "score": 75,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\수정한잣말\\NO_SKILL.H",
+    "extension": ".h",
+    "bytes": 8501,
+    "sha256": "7B30F1C79FB42B43B894638127855AE6856CEE000245C9ECD4FD56F642A46318",
+    "encoding": 1361,
+    "score": 835,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(120)별장_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 5517,
+    "sha256": "E59A9B522FA914FE4C7214EB4FC32A7A9E028F5246ABCF1B39A3E23976164137",
+    "encoding": 0,
+    "score": 89,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(150)묘지_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 3827,
+    "sha256": "3C77CFD4BD2D2035E6DB4E0843C971578E1E2D30A911361D3EADB483CBE07F4A",
+    "encoding": 0,
+    "score": 71,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(180)벌레_퐁뎅이스킵_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 2517,
+    "sha256": "62EC9DCE0B03642C381437485FAA3E52D6E84316BFEDF75E7ADD482017A28139",
+    "encoding": 0,
+    "score": 50,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(180)벌레_풍뎅이포함_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 2609,
+    "sha256": "0697CB383EAD2327F887DB170897B0325A9CE560F11F428B90FDD546479BC582",
+    "encoding": 0,
+    "score": 53,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(240)마녀촌_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 8353,
+    "sha256": "87C3243BC7F65612780898B6EA421DE018CE61CA509E3CC34A877E626438B0FA",
+    "encoding": 0,
+    "score": 165,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(280)폐허수도원_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 8975,
+    "sha256": "5B274354F211797113285324D519F0E954317FEF1554A91A61A424215D0D8871",
+    "encoding": 0,
+    "score": 173,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(300)카타1층_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 6761,
+    "sha256": "318E885CBA537CAF8189184446C0AE3F6D9E8ED9AF6A6438A465E1F7CD4EB1AB",
+    "encoding": 0,
+    "score": 138,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(300)카타1층_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 6871,
+    "sha256": "B9009C1CE422889A9286117F7554B770428500DF7DBC5A219A241F1B0F72BFD0",
+    "encoding": 0,
+    "score": 141,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(340)카타2층_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 6041,
+    "sha256": "ED83FC9A2FA9F3FA37EC721F7FD0B95D14ED150693D0E972DD01ACA3EDB8C741",
+    "encoding": 0,
+    "score": 110,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(340)카타2층_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 6097,
+    "sha256": "0A6EFE7D8BC59ADFB97564BE05FDD149791DCB53CA802E0A940409DDCA8F43C7",
+    "encoding": 0,
+    "score": 111,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(370)카타2층+보광_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 8039,
+    "sha256": "2439AB41594AABCCF501E226FD005365A5714F95DA59BF51D8BA51F5DD5891CD",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(440+신수301)환몽_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 31065,
+    "sha256": "37258850240A3078FF50696ACA4591270D34B7B53BA9E03497FE25E25958A374",
+    "encoding": 0,
+    "score": 654,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(440+신수301)환몽_연화결.scs",
+    "extension": ".scs",
+    "bytes": 31139,
+    "sha256": "690716CEAF6CAC2836440036E73251561CBB876D3929D12BB9A6BCBC8986974B",
+    "encoding": 0,
+    "score": 654,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(80)산촌_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 4171,
+    "sha256": "CAF55B5AD88EFFA5E2B86D1E454BD70B7FABC0C688D913A0C60F51120D2BEB0D",
+    "encoding": 0,
+    "score": 82,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\USE_SKILL.H",
+    "extension": ".h",
+    "bytes": 22986,
+    "sha256": "E248865D2D3051FAF4ED632A3ACF77BF93E084F6FF99FB362267819558A6380D",
+    "encoding": 1361,
+    "score": 1910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(120)별장_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 5517,
+    "sha256": "E59A9B522FA914FE4C7214EB4FC32A7A9E028F5246ABCF1B39A3E23976164137",
+    "encoding": 0,
+    "score": 89,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(150)묘지_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 3831,
+    "sha256": "88F7DAE8A0529D9E1CB2B7A278033C720A4A14A9F744A825062147492CD98A4C",
+    "encoding": 0,
+    "score": 71,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(180)벌레_퐁뎅이스킵_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 2517,
+    "sha256": "62EC9DCE0B03642C381437485FAA3E52D6E84316BFEDF75E7ADD482017A28139",
+    "encoding": 0,
+    "score": 50,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(180)벌레_풍뎅이포함_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 2609,
+    "sha256": "0697CB383EAD2327F887DB170897B0325A9CE560F11F428B90FDD546479BC582",
+    "encoding": 0,
+    "score": 53,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(240)마녀촌_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 8345,
+    "sha256": "24E4344B27E16F4A2E21E8D5BF4DA7BC2857331093FF395BA79EAD1BBA914E97",
+    "encoding": 0,
+    "score": 165,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(280)폐허수도원_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 8975,
+    "sha256": "5B274354F211797113285324D519F0E954317FEF1554A91A61A424215D0D8871",
+    "encoding": 0,
+    "score": 173,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(300)카타1층_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 6761,
+    "sha256": "318E885CBA537CAF8189184446C0AE3F6D9E8ED9AF6A6438A465E1F7CD4EB1AB",
+    "encoding": 0,
+    "score": 138,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(300)카타1층_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 6871,
+    "sha256": "B9009C1CE422889A9286117F7554B770428500DF7DBC5A219A241F1B0F72BFD0",
+    "encoding": 0,
+    "score": 141,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(340)카타2층_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 6041,
+    "sha256": "ED83FC9A2FA9F3FA37EC721F7FD0B95D14ED150693D0E972DD01ACA3EDB8C741",
+    "encoding": 0,
+    "score": 110,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(340)카타2층_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 6097,
+    "sha256": "0A6EFE7D8BC59ADFB97564BE05FDD149791DCB53CA802E0A940409DDCA8F43C7",
+    "encoding": 0,
+    "score": 111,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(370)카타2층+보광_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 8039,
+    "sha256": "2439AB41594AABCCF501E226FD005365A5714F95DA59BF51D8BA51F5DD5891CD",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(440+신수301)환몽_백화난무.scs",
+    "extension": ".scs",
+    "bytes": 31065,
+    "sha256": "37258850240A3078FF50696ACA4591270D34B7B53BA9E03497FE25E25958A374",
+    "encoding": 0,
+    "score": 654,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(440+신수301)환몽_연화결.scs",
+    "extension": ".scs",
+    "bytes": 31139,
+    "sha256": "8D2F6590B68FFDFA3B8C6FE972595CD8493C6391FEA20DE2B963813652904E56",
+    "encoding": 0,
+    "score": 654,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\(80)산촌_멸겁화.scs",
+    "extension": ".scs",
+    "bytes": 4171,
+    "sha256": "CAF55B5AD88EFFA5E2B86D1E454BD70B7FABC0C688D913A0C60F51120D2BEB0D",
+    "encoding": 0,
+    "score": 82,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H",
+    "extension": ".h",
+    "bytes": 24256,
+    "sha256": "E58988F21D51CEC5C8505FCAF4874F9396844DB34F9AE5755B6ED49072AE6C43",
+    "encoding": 1361,
+    "score": 1985,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL1.0.H",
+    "extension": ".h",
+    "bytes": 22986,
+    "sha256": "E248865D2D3051FAF4ED632A3ACF77BF93E084F6FF99FB362267819558A6380D",
+    "encoding": 1361,
+    "score": 1910,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(18)초보존_광장부터.scs",
+    "extension": ".scs",
+    "bytes": 3843,
+    "sha256": "3375DD8CA14529300DF7B68B21A7757792A6E8F7F0D81DA695953E0A1425AD7F",
+    "encoding": 0,
+    "score": 79,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(18)초보지역_광장부터.scs",
+    "extension": ".scs",
+    "bytes": 5483,
+    "sha256": "34EAABCA6B3C7116701FCFB70A7BBD4A25609EC230CC730DC634883CC6CFE4DD",
+    "encoding": 0,
+    "score": 117,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(50)폐가촌_구리마녀제외.scs",
+    "extension": ".scs",
+    "bytes": 3612,
+    "sha256": "C4EC80D53BF35D9F26ABD489155BE73CA577D893E6454AF5196D36FBDC6544B6",
+    "encoding": 1361,
+    "score": 40,
+    "format": "text cp1361"
+  },
+  {
+    "path": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(75)폐가촌_구리마녀포함.scs",
+    "extension": ".scs",
+    "bytes": 7587,
+    "sha256": "E7B683879A0D8A4FA6674F059E8DC18151542183CC02B283536460E4899DAF2B",
+    "encoding": 0,
+    "score": 155,
+    "format": "KSR Galmuri (research extraction)"
+  },
+  {
+    "path": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\NO_SKILL.H",
+    "extension": ".h",
+    "bytes": 8501,
+    "sha256": "7B30F1C79FB42B43B894638127855AE6856CEE000245C9ECD4FD56F642A46318",
+    "encoding": 1361,
+    "score": 835,
+    "format": "text cp1361"
+  }
+]

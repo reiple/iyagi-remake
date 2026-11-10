@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self' data:"
+    />
+    <title>이야기 · 퇴마요새</title>
+    <link rel="stylesheet" href="renderer.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <span class="mark">이</span>
+        <div>
+          <strong>이야기 <em>MUD</em></strong
+          ><small>당신의 모험이 이어지는 곳</small>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="script-open-panel">
+          혼잣말 <span id="script-badge">준비</span>
+        </button>
+        <button id="log">갈무리 시작</button
+        ><button id="settings">환경 설정 <kbd>F8</kbd></button>
+      </div>
+    </header>
+    <main>
+      <aside>
+        <div class="eyebrow">CONNECTION</div>
+        <h2>접속 프로필</h2>
+        <div class="profile">
+          <span class="orb"></span>
+          <div>
+            <b>퇴마요새</b><small id="address">xmud.ddnsfree.com:6666</small>
+          </div>
+        </div>
+        <label>서버 주소<input id="host" spellcheck="false" /></label>
+        <div class="pair">
+          <label>포트<input id="port" type="number" /></label
+          ><label
+            >한글 인코딩<select id="encoding">
+              <option value="cp949">CP949</option>
+              <option value="utf8">UTF-8</option>
+            </select></label
+          >
+        </div>
+        <button id="connect" class="primary">서버 연결</button
+        ><button id="disconnect">연결 종료</button>
+        <div class="divider"></div>
+        <div class="eyebrow">AUTOMATION</div>
+        <label class="toggle"
+          ><input id="triggers" type="checkbox" />자동반응 사용</label
+        >
+        <p class="hint">
+          설정한 문구가 나타나면 명령을 보냅니다. 규칙은 환경 설정에서
+          편집하세요.
+        </p>
+        <button id="stop" class="danger">■ 모든 자동 전송 중지</button>
+        <div class="side-bottom">
+          <span>이야기멀티의 익숙함을 담아</span
+          ><small>독립 클라이언트 · v0.1</small>
+        </div>
+      </aside>
+      <section class="workspace">
+        <div class="terminal-head">
+          <div>
+            <span class="live-dot" id="dot"></span><strong>퇴마요새</strong
+            ><span class="tag">TELNET</span>
+          </div>
+          <span id="status" role="status">연결 대기</span>
+        </div>
+        <div id="terminal"></div>
+        <div class="command-area">
+          <div class="input-meta">
+            <span>명령 입력 <kbd>↑</kbd> <kbd>↓</kbd> 기록</span
+            ><label><input id="secret" type="checkbox" />비밀 입력</label>
+          </div>
+          <form id="command-form">
+            <span class="prompt">❯</span
+            ><input
+              id="command"
+              autocomplete="off"
+              placeholder="명령을 입력하세요. 여러 명령은 | 로 구분합니다."
+              list="suggestions"
+              aria-label="게임 명령"
+            /><datalist id="suggestions"></datalist
+            ><button class="primary" type="submit">전송 ↵</button>
+          </form>
+          <div id="buttons"></div>
+        </div>
+        <footer>
+          <span id="message" role="status"
+            >준비되었습니다. 서버 연결을 눌러 모험을 시작하세요.</span
+          ><span>F11 전체화면</span>
+        </footer>
+      </section>
+    </main>
+    <dialog id="dialog">
+      <div class="dialog-title">
+        <div>
+          <div class="eyebrow">PREFERENCES</div>
+          <h2>내 플레이에 맞게</h2>
+        </div>
+        <button id="close">닫기 ✕</button>
+      </div>
+      <nav id="tabs">
+        <button data-tab="display" class="selected">화면·전송</button
+        ><button data-tab="macros">단축키·버튼</button
+        ><button data-tab="rules">자동반응</button
+        ><button data-tab="aliases">문장 추천</button>
+      </nav>
+      <div id="display" class="panel">
+        <label>글꼴<input id="font" /></label>
+        <div class="pair">
+          <label
+            >글자 크기<input
+              id="fontSize"
+              type="number"
+              min="10"
+              max="40" /></label
+          ><label
+            >명령 간격 (ms)<input id="interval" type="number" min="50" /></label
+          ><label
+            >$, 지연 (ms)<input id="delay" type="number" min="50"
+          /></label>
+        </div>
+        <p class="hint">
+          CP949를 기본으로 사용합니다. 글자가 깨지면 연결을 종료하고 인코딩을
+          변경하세요.<br />갈무리는 수신 화면을 UTF-8로 저장합니다. 비밀 입력
+          중에는 기록을 일시 중지합니다.
+        </p>
+      </div>
+      <div id="macros" class="panel" hidden>
+        <p class="hint">
+          | 여러 명령 · $, 지연 · $$ 달러 문자 · $A1 / $S1 매크로 참조<br />키를
+          바꾸려면 단축키 칸에서 원하는 조합을 누르세요. 비워 두면 기본키를
+          사용합니다.
+        </p>
+        <div id="macro-rows"></div>
+        <h3>화면 단축버튼</h3>
+        <div id="button-rows"></div>
+      </div>
+      <div id="rules" class="panel" hidden>
+        <p class="hint">
+          문자열이 수신되면 명령을 보냅니다. 정규식은 지원하지 않습니다. 저장 후
+          자동반응을 켜세요.
+        </p>
+        <div id="rule-rows"></div>
+        <button id="add-rule">+ 규칙 추가</button>
+      </div>
+      <div id="aliases" class="panel" hidden>
+        <p class="hint">
+          한 줄에 한 문장, 최대 150개. 게임 입력창에서 추천합니다.
+        </p>
+        <button id="import">ALIAS.TXT 가져오기</button
+        ><textarea id="alias-text" rows="12"></textarea>
+      </div>
+      <div class="dialog-footer">
+        <span id="settings-message"></span
+        ><button id="save" class="primary">설정 저장</button>
+      </div>
+    </dialog>
+    <dialog id="script-dialog">
+      <div class="dialog-title">
+        <div>
+          <div class="eyebrow">SCRIPT WORKSPACE</div>
+          <h2>혼잣말 번역 · 실행</h2>
+        </div>
+        <button id="script-close">닫기 ✕</button>
+      </div>
+      <div class="script-toolbar">
+        <select id="script-encoding" aria-label="소스 인코딩">
+          <option value="auto">인코딩 자동</option>
+          <option value="johab">조합형</option>
+          <option value="cp949">CP949</option>
+          <option value="utf8">UTF-8</option></select
+        ><button id="script-import">SCS 불러오기</button
+        ><button id="script-header">헤더 폴더</button
+        ><button id="script-save">다른 이름 저장</button>
+      </div>
+      <div id="script-file" class="hint">
+        편집한 소스 · 원본 SCF 바이너리는 지원하지 않습니다.
+      </div>
+      <div id="script-root" class="hint">
+        헤더: 소스와 같은 폴더 / I.H·ENGLISH.H는 내장 호환 선언
+      </div>
+      <label for="script-editor">소스 코드</label
+      ><textarea
+        id="script-editor"
+        spellcheck="false"
+        wrap="off"
+        aria-label="혼잣말 소스 코드"
+      ></textarea>
+      <div class="script-toolbar">
+        <button id="script-compile" class="primary">번역 / 문법 검사</button
+        ><button id="script-run" disabled>▶ 실행</button
+        ><button id="script-pause" disabled>일시정지</button
+        ><button id="script-resume" disabled>계속</button
+        ><button id="script-stop" class="danger">■ 중지</button
+        ><span id="script-state">편집 중</span>
+      </div>
+      <p class="hint">
+        호환 프로필 v1 · 시간 단위 10ms · 문구 목록은 공백 구분, 백틱은 공백으로
+        해석합니다. 원본과 완전 동등성은 미검증입니다. 실행은 현재 연결된 서버에
+        명령을 보냅니다.
+      </p>
+      <pre id="script-diagnostics" role="status">
+소스를 불러오거나 작성한 다음 번역하세요.</pre>
+    </dialog>
+    <dialog id="script-input-dialog">
+      <h2 id="script-input-prompt">혼잣말 입력</h2>
+      <form id="script-input-form">
+        <input
+          id="script-input-value"
+          autocomplete="off"
+          aria-label="혼잣말 요청 입력"
+        /><button type="submit" class="primary">확인</button
+        ><button type="button" id="script-input-cancel">실행 중지</button>
+      </form>
+    </dialog>
+    <script src="renderer.js"></script>
+  </body>
+</html>

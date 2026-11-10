@@ -1,0 +1,996 @@
+[
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\호수사번테스트.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 627,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\done\\산존.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 813,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\done\\호수.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 669,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\백금사냥_주술사 test.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\백금사냥_주술사 test.scs:1930: ) 필요 (진번이)"
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\백금사냥_주술사.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 851,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\정령계초보3지역.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1004,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\폐허(연화결).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 958,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\현철사냥.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\현철사냥.scs:172: 해독하지 못한 문자가 있습니다. 인코딩 또는 원본을 확인하세요."
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\[정령] 물광산흙.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1577,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 루비-오닉스(경험치모으기).scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 루비-오닉스(경험치모으기).scs:37: 문자열 안의 줄바꿈"
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오-경험치위주(렙따케릭용).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 976,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오-성-수정.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 963,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 카리오뇌격장(하).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1436,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워 6~4 완벽버전(하).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 810,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워 6~4 제왕.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 810,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-4 뇌격장.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 757,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-4 제왕.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 757,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-5 - 뇌격장.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 900,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 타워1-5 - 제왕.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 900,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\■ 환몽지대(불제자용) 그룹대화.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 616,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(블러드 58).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 698,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(블러드용).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1232,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\★ 카리오(성).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 698,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-1.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1519,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-2.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 888,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-3.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1936,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-4.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1621,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-5_나무뿌리잘라.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 707,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\1-5_측백산장.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 444,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\2_1.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 7239,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-1.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 7212,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-2.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1852,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\2-3.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2549,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\3-1.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2630,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-2.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1313,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-3.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1304,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\그린-오닉스-MadeBy퇴마선생.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 943,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\뉴카리오-경험치위주(밥수저).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 976,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\뉴카타2층(밥수저).scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 790,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤(그린-블랙).scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 476,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤(그린-실버).scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 536,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤지역(그린-골드만).scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 596,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\드래곤지역(그린-다이아까지).scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 836,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\루비-오닉스.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 581,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산불제자.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산불제자.scs:44: 해독하지 못한 문자가 있습니다. 인코딩 또는 원본을 확인하세요."
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산주술사-1.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1085,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\백금광산주술사.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1085,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\버려진+논+by+델피에로.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 596,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\부서진+빌딩+by+델피에로.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 350,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\산촌+by+델피에로.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 618,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\수저의카리오수정판(무한돌리기좋음).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1442,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\초보존Re.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\초보존Re.scs:5108: 지원하지 않는 문자 ?"
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타1층-멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1086,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타1층-휘안금술.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1107,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층(초입시작)-백화난무.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 808,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층불제자 수정.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 843,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\카타2층주술사.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 842,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\타워1-5.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 900,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\파사궁극카리오.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1492,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1173,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲물.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1505,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\화염숲물광산흙.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 2453,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\환몽지대(백화난무).scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\환몽지대(백화난무).scs:41: 해독하지 못한 문자가 있습니다. 인코딩 또는 원본을 확인하세요."
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\환몽지대(불제자용).scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 616,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-1.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1519,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-2.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 888,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\1-5_측백산장.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 444,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\MUD\\MUD\\퇴마요새\\혼잣말\\퇴마 임무\\3-1.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 2622,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: english.h"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_도목검_0번.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1341,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\수정한잣말\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_도목검.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1345,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\수정한잣말\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\(18)초보존_광장부터_수정.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1323,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\수정한잣말\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(18)초보존_광장부터.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1323,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\18_초보지역_광장_정비_기술.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1607,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\공격하는몹이름찾기.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1604,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터_무기정비.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\수정한잣말\\(18)초보지역_광장부터_무기정비.scs:86: 문자열 안의 줄바꿈"
+  },
+  {
+    "file": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(18)초보지역_광장부터.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1563,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(50)폐가촌_구리마녀제외.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1737,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\(75)폐가촌_구리마녀포함.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 1795,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\평타사냥V1.0\\평타사냥\\NO_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\18_초보지역_불제자_광장정비기술.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1708,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\18_초보지역_주술사_광장정비기술.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1695,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\50_폐가촌(마녀제외)_불제자.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1882,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\50_폐가촌(마녀제외)_주술사.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 1882,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\구리덩이구하기.scs",
+    "ok": false,
+    "error": "Error: G:\\퇴마요새\\수정한잣말\\구리덩이구하기.scs:436: 문자열 안의 줄바꿈"
+  },
+  {
+    "file": "G:\\퇴마요새\\수정한잣말\\구리덩이파.scs",
+    "ok": true,
+    "format": "조합형",
+    "nodes": 81,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(120)별장_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2857,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(150)묘지_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2634,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(180)벌레_퐁뎅이스킵_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2631,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(180)벌레_풍뎅이포함_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2631,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(240)마녀촌_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3184,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(280)폐허수도원_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3353,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(300)카타1층_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3143,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(300)카타1층_백화난무.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3155,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(340)카타2층_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2973,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(340)카타2층_백화난무.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2981,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(370)카타2층+보광_백화난무.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3233,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(440+신수301)환몽_백화난무.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 6251,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\(440+신수301)환몽_연화결.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 6140,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.0\\스킬사냥\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(80)산촌_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2817,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(150)묘지_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 2741,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(240)마녀촌_멸겁화.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 3303,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  },
+  {
+    "file": "G:\\퇴마요새\\스킬사냥V1.1\\(440+신수301)환몽_연화결.scs",
+    "ok": true,
+    "format": "KSR Galmuri / 조합형",
+    "nodes": 6251,
+    "includes": [
+      "내장 호환 헤더: I.H",
+      "내장 호환 헤더: ENGLISH.H",
+      "G:\\퇴마요새\\스킬사냥V1.1\\USE_SKILL.H"
+    ]
+  }
+]
