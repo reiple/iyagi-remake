@@ -1,8 +1,10 @@
 import { setupScriptUi } from "./script-ui";
+import { setupProfiles } from "./profiles-ui";
 import "./style.css";
 import { Terminal } from "@xterm/xterm";
 import { FitAddon } from "@xterm/addon-fit";
 import type { Settings } from "../core/settings";
+import type { Profile } from "../core/profiles";
 declare global {
   interface Window {
     mud: {
@@ -27,6 +29,7 @@ async function request(a: string, p?: unknown) {
 }
 let settings: Settings;
 let connected = false;
+let connecting = false;
 let remoteSecret = false;
 let composing = false;
 let compositionEnter = false;
@@ -38,10 +41,10 @@ const term = new Terminal({
   fontFamily: "Consolas, monospace",
   fontSize: 17,
   theme: {
-    background: "#090e16",
-    foreground: "#cbd8e8",
-    cursor: "#6cdbc1",
-    selectionBackground: "#31564e",
+    background: "#1c1e1c",
+    foreground: "#e3e5dc",
+    cursor: "#d1e6a6",
+    selectionBackground: "#445334",
   },
   scrollback: 10000,
   convertEol: true,
@@ -70,10 +73,6 @@ function updateSecret() {
   else input("command").setAttribute("list", "suggestions");
 }
 function apply() {
-  input("host").value = settings.host;
-  input("port").value = String(settings.port);
-  input("encoding").value = settings.encoding;
-  $("address").textContent = settings.host + ":" + settings.port;
   term.options.fontFamily = settings.font;
   term.options.fontSize = settings.fontSize;
   const area = document.querySelector<HTMLElement>(".command-area")!;
@@ -162,18 +161,15 @@ input("secret").onchange = () => {
   updateSecret();
   void request("secret", input("secret").checked).catch(() => {});
 };
-$("connect").onclick = () => {
-  const s = {
-    ...settings,
-    host: input("host").value.trim(),
-    port: Number(input("port").value),
-    encoding: input("encoding").value,
-  };
-  input("secret").checked = false;
-  updateSecret();
-  void request("connect", s).catch(() => {});
-};
-$("disconnect").onclick = () => void request("disconnect").catch(() => {});
+function displayProfile(profile: Profile) {
+  $("profile-name").textContent = profile.name;
+  $("workspace-name").textContent = profile.name;
+  $("address").textContent = `${profile.host}:${profile.port}`;
+}
+const openProfiles = setupProfiles(
+  (profiles) => window.mud.request("save-profiles", profiles),
+  (profile) => { if (!connected && !connecting) displayProfile(profile); },
+);
 $("stop").onclick = () => {
   void request("stop").catch(() => {});
   message("전송 대기열과 자동반응을 중지했습니다.");
@@ -187,6 +183,12 @@ $("log").onclick = () =>
     })
     .catch(() => {});
 window.mud.subscribe((e) => {
+  if (e.type === "open-profiles") openProfiles(e.value);
+  if (e.type === "profile-connected") {
+    displayProfile(e.value);
+    input("secret").checked = false;
+    updateSecret();
+  }
   if (e.type === "data") term.write(e.value);
   if (e.type === "error") message(e.value);
   if (e.type === "secret") {
@@ -197,13 +199,9 @@ window.mud.subscribe((e) => {
   if (e.type === "log") $("log").textContent = "갈무리 시작";
   if (e.type === "status") {
     connected = e.value === "연결됨";
+    connecting = e.value === "접속 중";
     $("status").textContent = e.value;
     $("dot").classList.toggle("connected", connected);
-    $<HTMLButtonElement>("connect").disabled =
-      connected || e.value === "접속 중";
-    ["host", "port", "encoding"].forEach(
-      (id) => (input(id).disabled = connected || e.value === "접속 중"),
-    );
     if (e.value === "연결 종료") {
       history = [];
       position = 0;
@@ -326,9 +324,6 @@ $("save").onclick = async () => {
   edit.fontSize = Number(input("fontSize").value);
   edit.interval = Number(input("interval").value);
   edit.delay = Number(input("delay").value);
-  edit.host = input("host").value.trim();
-  edit.port = Number(input("port").value);
-  edit.encoding = input("encoding").value as Settings["encoding"];
   edit.aliases = input("alias-text")
     .value.split(/\r?\n/)
     .map((s) => s.trim())
@@ -361,12 +356,7 @@ window.addEventListener("keydown", (e) => {
     void request("fullscreen").catch(() => {});
     return;
   }
-  if (
-    dialog.open ||
-    document.getElementById("script-dialog")?.hasAttribute("open") ||
-    document.getElementById("script-input-dialog")?.hasAttribute("open")
-  )
-    return;
+  if (document.querySelector("dialog[open]")) return;
   if (e.key === "F8" && !e.altKey && !e.shiftKey && !e.ctrlKey) {
     e.preventDefault();
     openSettings();
@@ -389,11 +379,14 @@ window.addEventListener("keydown", (e) => {
 void request("load")
   .then((r) => {
     settings = r.settings;
+    displayProfile(r.profile);
+    $("app-version").textContent = `버전 v${r.version}`;
+    document.title = `이야기 MUD · v${r.version}`;
     apply();
     if (r.warning) message(r.warning);
     term.writeln("\x1b[38;2;108;219;193m  이야기 · MUD\x1b[0m");
     term.writeln("\r\n  퇴마요새로 이어지는 새로운 창\r\n");
-    term.writeln("  왼쪽의 서버 연결을 누르면 게임 화면이 표시됩니다.");
+    term.writeln("  접속 → 서버 연결에서 프로필을 선택하세요.");
     term.writeln("  명령은 채팅 입력창에, 자주 쓰는 명령은 단축버튼에.\r\n");
     term.writeln("\x1b[90m  연결 전 안내 화면입니다.\x1b[0m");
   })

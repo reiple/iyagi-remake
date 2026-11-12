@@ -25,6 +25,8 @@ await build({
   target: "chrome130",
 });
 await copyFile("src/renderer/index.html", "dist/index.html");
+await copyFile("assets/icon.svg", "dist/icon.svg");
+await copyFile("assets/icon.png", "dist/icon.png");
 
 await build({
   entryPoints: ["src/script/worker.ts"],

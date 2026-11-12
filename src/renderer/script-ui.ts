@@ -4,6 +4,7 @@ export function setupScriptUi() {
   const dialog = $<HTMLDialogElement>("script-dialog");
   const editor = $<HTMLTextAreaElement>("script-editor");
   const diagnostics = $("script-diagnostics");
+  const runningFile = $("script-running-file");
   let compiled = false;
   let running = false;
   let paused = false;
@@ -124,6 +125,12 @@ export function setupScriptUi() {
       };
       $("script-state").textContent = names[m.state] || m.state;
       $("script-badge").textContent = names[m.state] || m.state;
+      if (!running || typeof m.fileName === "string") {
+        const name = running ? m.fileName || "편집 중인 소스" : "";
+        runningFile.textContent = name;
+        runningFile.title = name;
+        runningFile.hidden = !running;
+      }
       if (!running && inputDialog.open) inputDialog.close();
       refresh();
     }
