@@ -70,3 +70,10 @@ test("escaped subnegotiation is bounded", () => {
     p.feed(Buffer.from([255, 250, 24, ...Array(18000).fill(255)])),
   );
 });
+
+test("chat position migrates old settings and validates choices", () => {
+ const old = defaults() as any; delete old.commandPosition;
+ assert.equal(validateSettings(old).commandPosition, "bottom");
+ assert.equal(validateSettings({...old, commandPosition:"top"}).commandPosition,"top");
+ assert.throws(()=>validateSettings({...old,commandPosition:"side"}));
+});

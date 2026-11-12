@@ -3,6 +3,7 @@ export type Settings = {
   host: string;
   port: number;
   encoding: "cp949" | "utf8";
+  commandPosition: "top" | "bottom";
   font: string;
   fontSize: number;
   interval: number;
@@ -20,6 +21,7 @@ export function defaults(): Settings {
     encoding: "cp949",
     font: "D2Coding, Consolas, monospace",
     fontSize: 17,
+    commandPosition: "bottom",
     interval: 150,
     delay: 500,
     bindings: {},
@@ -95,5 +97,6 @@ export function validateSettings(x: any): Settings {
     )
   )
     fail();
-  return JSON.parse(JSON.stringify(x));
+  if (x.commandPosition !== undefined && !["top", "bottom"].includes(x.commandPosition)) fail();
+  return JSON.parse(JSON.stringify({...x, commandPosition: x.commandPosition ?? "bottom"}));
 }

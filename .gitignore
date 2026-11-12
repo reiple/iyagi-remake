@@ -12,3 +12,5 @@ release-v0.2/
 .env
 .env.*
 *.log
+
+release-v*/

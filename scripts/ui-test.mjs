@@ -11,8 +11,8 @@ const server = net.createServer((s) => {
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const app = await _electron.launch({
-  executablePath: "node_modules/electron/dist/electron.exe",
-  args: [".", "--user-data-dir=" + process.cwd() + "/.ui-test-profile"],
+  executablePath: process.env.APP_EXECUTABLE || "node_modules/electron/dist/electron.exe",
+  args: [...(process.env.APP_EXECUTABLE ? [] : ["."]), "--user-data-dir=" + process.cwd() + "/.ui-test-profile"],
   env: Object.fromEntries(
     Object.entries(process.env).filter(([k]) => k !== "ELECTRON_RUN_AS_NODE"),
   ),
@@ -40,13 +40,29 @@ try {
   assert.ok(!received.join("").includes("미완성"));
   await page.locator("#command").dispatchEvent("compositionend");
   await page.waitForTimeout(50);
+  // One Enter commits the last Korean syllable and sends the completed line.
+  await page.fill("#command", "한글입력");
+  await page.evaluate(() => {
+    const input = document.querySelector("#command");
+    input.dispatchEvent(new CompositionEvent("compositionstart"));
+    input.dispatchEvent(new KeyboardEvent("keydown", {
+      key: "Enter", code: "Enter", isComposing: true, bubbles: true,
+    }));
+    input.dispatchEvent(new CompositionEvent("compositionend", { data: "력" }));
+    input.dispatchEvent(new KeyboardEvent("keyup", {
+      key: "Enter", code: "Enter", bubbles: true,
+    }));
+  });
+  await page.waitForTimeout(300);
+  assert.equal(received.join("").split("한글입력\r\n").length - 1, 1);
+  assert.equal(await page.inputValue("#command"), "");
   await page.check("#secret");
   await page.fill("#command", "비밀값");
   await page.locator("#command").press("Enter");
   await page.waitForTimeout(100);
   await page.uncheck("#secret");
   await page.locator("#command").press("ArrowUp");
-  assert.equal(await page.inputValue("#command"), "보기|상태");
+  assert.equal(await page.inputValue("#command"), "한글입력");
   await page.click("#disconnect");
   assert.deepEqual(errors, []);
   console.log(

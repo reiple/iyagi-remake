@@ -2,19 +2,21 @@
 
 퇴마요새용 Windows x64 독립 클라이언트입니다. 이야기멀티 원본을 수정하거나 포함하지 않습니다.
 
-현재 버전: **0.2.0** · [전체 작업 현황과 구조](docs/project-status.md) · [혼잣말 사용 안내](docs/monologue-guide.md)
+현재 버전: **0.2.1** · [전체 작업 현황과 구조](docs/project-status.md) · [혼잣말 사용 안내](docs/monologue-guide.md)
 
 저장소에는 소스와 문서가 포함됩니다. 새로 clone한 환경에서는 아래 개발 절차로 빌드하세요.
 
 ## 실행
 
-`release-v0.2/win-unpacked/Iyagi Mud.exe`를 실행하거나 프로젝트 폴더의 `이야기 실행.cmd`를 더블클릭하세요. `win-unpacked` 폴더 전체가 필요합니다. EXE만 다른 곳으로 옮기지 마세요.
+`release-v0.2.1/win-unpacked/Iyagi Mud.exe`를 실행하거나 프로젝트 폴더의 `이야기 실행.cmd`를 더블클릭하세요. `win-unpacked` 폴더 전체가 필요합니다. EXE만 다른 곳으로 옮기지 마세요.
 
 왼쪽 **서버 연결**을 누르면 `xmud.ddnsfree.com:6666`에 CP949로 접속합니다. 서버가 안내하는 대로 아래 입력창에서 Enter를 누르고 로그인하세요. 계정과 비밀번호는 저장하지 않습니다. 비밀번호를 입력하기 전에 **비밀 입력**을 켜고 입력 완료 후 끄세요. 서버의 Telnet ECHO 협상도 비밀 모드에 반영됩니다. 서버가 비밀번호 상태를 알리지 않는 경우 수동 전환이 필요합니다.
 
 ## 기본 사용
 
-- 아래 입력창에서 Enter로 전송. ↑/↓로 세션 명령 기록을 탐색합니다.
+- 화면의 일반 영역을 클릭하면 채팅 입력창에 포커스가 이동합니다. 텍스트 드래그 선택과 다른 입력칸·버튼 조작은 유지합니다.
+- **환경 설정 → 화면·전송 → 채팅 입력창 위치**에서 출력창 위/아래를 선택하고 저장하세요. 재실행 후에도 유지됩니다.
+- 채팅 입력창에서 Enter로 전송. ↑/↓로 세션 명령 기록을 탐색합니다.
 - `보기|상태`는 두 명령을 순서대로 전송합니다. 기본 간격 150ms.
 - `보기|$,상태`는 추가 지연을 둡니다. $, 기본 500ms, 설정에서 변경 가능.
 - `$$`는 달러 문자 하나를 보냅니다. 비밀 입력에서는 매크로 문법을 해석하지 않습니다.
@@ -48,7 +50,7 @@ npm test
 npm run check
 npm run build
 npm start
-npm run pack -- --config.directories.output=release-v0.2
+npm run pack -- --config.directories.output=release-v0.2.1
 node scripts/ui-test.mjs
 node scripts/smoke.mjs
 ```
