@@ -8,7 +8,7 @@
 
 ## 실행
 
-`release-v0.2.1/win-unpacked/Iyagi Mud.exe`를 실행하거나 프로젝트 폴더의 `이야기 실행.cmd`를 더블클릭하세요. `win-unpacked` 폴더 전체가 필요합니다. EXE만 다른 곳으로 옮기지 마세요.
+Windows 배포 ZIP을 모두 풀고 `Iyagi Mud.exe`를 실행하세요. ZIP을 만드는 방법과 배포 절차는 [Windows 배포 안내](docs/distribution.md)를 참고하세요. 소스에서 개발할 때는 `npm run build` 후 `npm start`로 실행할 수 있습니다.
 
 왼쪽 **서버 연결**을 누르면 `xmud.ddnsfree.com:6666`에 CP949로 접속합니다. 서버가 안내하는 대로 아래 입력창에서 Enter를 누르고 로그인하세요. 계정과 비밀번호는 저장하지 않습니다. 비밀번호를 입력하기 전에 **비밀 입력**을 켜고 입력 완료 후 끄세요. 서버의 Telnet ECHO 협상도 비밀 모드에 반영됩니다. 서버가 비밀번호 상태를 알리지 않는 경우 수동 전환이 필요합니다.
 
