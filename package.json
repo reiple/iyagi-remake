@@ -10,7 +10,8 @@
     "check": "tsc --noEmit",
     "build": "node scripts/build.mjs",
     "start": "electron .",
-    "pack": "electron-builder --win dir --x64"
+    "pack": "electron-builder --win dir --x64",
+    "dist:win": "npm run build && electron-builder --win zip --x64 --config.artifactName=Iyagi-Mud-${version}-win-x64.${ext}"
   },
   "build": {
     "appId": "local.iyagi.mud",
