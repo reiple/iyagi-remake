@@ -72,6 +72,7 @@ connection.on("data", (text) => {
 });
 app.whenReady().then(() => {
   configPath = path.join(app.getPath("userData"), "settings.json");
+  const scriptFolderPath = path.join(app.getPath("userData"), "last-script-folder.txt");
   let warning = "";
   try {
     if (fs.existsSync(configPath))
@@ -112,12 +113,27 @@ app.whenReady().then(() => {
       throw Error("허용되지 않은 요청입니다.");
     switch (action) {
       case "script-open": {
+        let defaultPath: string | undefined;
+        try {
+          const folder = fs.readFileSync(scriptFolderPath, "utf8");
+          if (path.isAbsolute(folder) && fs.statSync(folder).isDirectory())
+            defaultPath = folder;
+        } catch {
+          // A missing or unavailable folder falls back to the system default.
+        }
         const r = await dialog.showOpenDialog(win, {
+          defaultPath,
           properties: ["openFile"],
           filters: [{ name: "혼잣말 소스", extensions: ["scs", "h", "txt"] }],
         });
-        if (r.canceled) return null;
-        return scripts.load(r.filePaths[0], payload || "auto");
+        const [file] = r.filePaths;
+        if (r.canceled || !file) return null;
+        try {
+          fs.writeFileSync(scriptFolderPath, path.dirname(file), "utf8");
+        } catch {
+          // The file can still be opened if the preference cannot be saved.
+        }
+        return scripts.load(file, payload || "auto");
       }
       case "script-header": {
         const r = await dialog.showOpenDialog(win, {
