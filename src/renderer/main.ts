@@ -29,6 +29,7 @@ let settings: Settings;
 let connected = false;
 let remoteSecret = false;
 let composing = false;
+let compositionEnter = false;
 let history: string[] = [];
 let position = 0;
 let draft = "";
@@ -113,7 +114,7 @@ async function send(text: string) {
 }
 $("command-form").onsubmit = (e) => {
   e.preventDefault();
-  if (composing) return;
+  if (composing || compositionEnter) return;
   const value = input("command").value;
   void send(value)
     .then(() => {
@@ -122,10 +123,21 @@ $("command-form").onsubmit = (e) => {
     .catch(() => {});
 };
 input("command").addEventListener("compositionstart", () => (composing = true));
-input("command").addEventListener("compositionend", () =>
-  setTimeout(() => (composing = false), 0),
-);
+input("command").addEventListener("compositionend", () => {
+  composing = false;
+});
 input("command").onkeydown = (e) => {
+  if (e.key === "Enter") {
+    if (e.isComposing || composing) {
+      // Let the IME commit the final syllable before sending on keyup.
+      compositionEnter = true;
+      return;
+    }
+    e.preventDefault();
+    if (!e.repeat && !compositionEnter)
+      $<HTMLFormElement>("command-form").requestSubmit();
+    return;
+  }
   if (e.isComposing || composing) return;
   if (!secret() && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
     e.preventDefault();
@@ -138,6 +150,14 @@ input("command").onkeydown = (e) => {
       position === history.length ? draft : history[position];
   }
 };
+input("command").onkeyup = (e) => {
+  if (e.key !== "Enter" || !compositionEnter) return;
+  compositionEnter = false;
+  if (!composing) $<HTMLFormElement>("command-form").requestSubmit();
+};
+input("command").addEventListener("blur", () => {
+  compositionEnter = false;
+});
 input("secret").onchange = () => {
   updateSecret();
   void request("secret", input("secret").checked).catch(() => {});
