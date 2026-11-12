@@ -11,63 +11,33 @@
     <link rel="stylesheet" href="renderer.css" />
   </head>
   <body>
-    <header>
-      <div class="brand">
-        <span class="mark">이</span>
-        <div>
-          <strong>이야기 <em>MUD</em></strong
-          ><small>당신의 모험이 이어지는 곳</small>
-        </div>
-      </div>
-      <div class="top-actions">
-        <button id="script-open-panel">
-          혼잣말 <span id="script-badge">준비</span>
-        </button>
-        <button id="log">갈무리 시작</button
-        ><button id="settings">환경 설정 <kbd>F8</kbd></button>
-      </div>
-    </header>
     <main>
       <aside>
-        <div class="eyebrow">CONNECTION</div>
-        <h2>접속 프로필</h2>
+        <div class="brand">
+          <img class="mark" src="icon.svg" alt="" />
+          <div><strong>이야기 MUD</strong><small id="app-version"></small></div>
+        </div>
         <div class="profile">
-          <span class="orb"></span>
-          <div>
-            <b>퇴마요새</b><small id="address">xmud.ddnsfree.com:6666</small>
-          </div>
+          <span class="live-dot" id="dot"></span>
+          <div><b id="profile-name"></b><small id="address"></small></div>
         </div>
-        <label>서버 주소<input id="host" spellcheck="false" /></label>
-        <div class="pair">
-          <label>포트<input id="port" type="number" /></label
-          ><label
-            >한글 인코딩<select id="encoding">
-              <option value="cp949">CP949</option>
-              <option value="utf8">UTF-8</option>
-            </select></label
-          >
-        </div>
-        <button id="connect" class="primary">서버 연결</button
-        ><button id="disconnect">연결 종료</button>
-        <div class="divider"></div>
-        <div class="eyebrow">AUTOMATION</div>
-        <label class="toggle"
-          ><input id="triggers" type="checkbox" />자동반응 사용</label
-        >
-        <p class="hint">
-          설정한 문구가 나타나면 명령을 보냅니다. 규칙은 환경 설정에서
-          편집하세요.
-        </p>
-        <button id="stop" class="danger">■ 모든 자동 전송 중지</button>
+        <nav class="sidebar-tools" aria-label="도구">
+          <button id="script-open-panel">
+            혼잣말 <span id="script-badge">준비</span>
+            <span id="script-running-file" hidden></span>
+          </button>
+          <button id="log">갈무리 시작</button>
+          <button id="settings">환경 설정 <kbd>F8</kbd></button>
+        </nav>
         <div class="side-bottom">
-          <span>이야기멀티의 익숙함을 담아</span
-          ><small>독립 클라이언트 · v0.2.1</small>
+          <label class="toggle"><input id="triggers" type="checkbox" />자동반응 사용</label>
+          <button id="stop" class="danger">■ 모든 자동 전송 중지</button>
         </div>
       </aside>
       <section class="workspace">
         <div class="terminal-head">
           <div>
-            <span class="live-dot" id="dot"></span><strong>퇴마요새</strong
+            <strong id="workspace-name">MUD</strong
             ><span class="tag">TELNET</span>
           </div>
           <span id="status" role="status">연결 대기</span>
@@ -93,11 +63,34 @@
         </div>
         <footer>
           <span id="message" role="status"
-            >준비되었습니다. 서버 연결을 눌러 모험을 시작하세요.</span
+            >접속 메뉴에서 서버를 선택하세요.</span
           ><span>F11 전체화면</span>
         </footer>
       </section>
     </main>
+    <dialog id="profiles-dialog" aria-labelledby="profiles-title">
+      <div class="dialog-title">
+        <h2 id="profiles-title">접속 프로필 관리</h2>
+        <button type="button" id="profiles-close">닫기</button>
+      </div>
+      <form id="profiles-form">
+        <div class="profile-picker">
+          <label>저장된 프로필<select id="profile-select"></select></label>
+          <button type="button" id="profile-add">추가</button>
+          <button type="button" id="profile-remove">삭제</button>
+        </div>
+        <label>프로필 이름<input id="profile-label" required maxlength="60" /></label>
+        <label>서버 주소<input id="host" required maxlength="253" spellcheck="false" /></label>
+        <div class="pair">
+          <label>포트<input id="port" required type="number" min="1" max="65535" /></label>
+          <label>인코딩<select id="encoding"><option value="cp949">CP949</option><option value="utf8">UTF-8</option></select></label>
+        </div>
+        <div class="dialog-footer">
+          <span id="profiles-message" role="status"></span>
+          <button id="profiles-save" class="primary" type="submit">저장</button>
+        </div>
+      </form>
+    </dialog>
     <dialog id="dialog">
       <div class="dialog-title">
         <div>

@@ -2,6 +2,7 @@ import { _electron } from "playwright";
 import net from "node:net";
 import iconv from "iconv-lite";
 import assert from "node:assert/strict";
+import { clickMenu, connectLocal } from "./menu-test-helpers.mjs";
 const received = [];
 let socket;
 const server = net.createServer((s) => {
@@ -23,9 +24,7 @@ try {
   page.on("pageerror", (e) => errors.push(e.message));
   await page.waitForSelector("#command");
   await page.waitForTimeout(500);
-  await page.fill("#host", "127.0.0.1");
-  await page.fill("#port", String(server.address().port));
-  await page.click("#connect");
+  await connectLocal(app, page, server.address().port);
   await page.waitForFunction(
     () => document.querySelector("#status").textContent === "연결됨",
   );
@@ -63,7 +62,8 @@ try {
   await page.uncheck("#secret");
   await page.locator("#command").press("ArrowUp");
   assert.equal(await page.inputValue("#command"), "한글입력");
-  await page.click("#disconnect");
+  await clickMenu(app, "disconnect-profile");
+  await page.waitForFunction(() => document.querySelector("#status").textContent === "연결 종료");
   assert.deepEqual(errors, []);
   console.log(
     "UI integration passed: TCP, CP949 commands, macro order, IME composition guard, secret history",

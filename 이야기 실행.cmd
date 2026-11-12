@@ -1,3 +1,3 @@
 @echo off
 set ELECTRON_RUN_AS_NODE=
-start "" "%~dp0release-v0.2.1-script-folder\win-unpacked\Iyagi Mud.exe"
+start "" "%~dp0release-v0.3.0-script-status\win-unpacked\Iyagi Mud.exe"

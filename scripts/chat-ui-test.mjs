@@ -8,14 +8,14 @@ let app=await launch();
 const errors=[];
 try {
  let page=await app.firstWindow();page.on('pageerror',e=>errors.push(e.message));
- await page.waitForFunction(()=>document.querySelector('#host').value.length>0);
+ await page.waitForFunction(()=>document.querySelector('#app-version').textContent.length>0);
  const focused=()=>page.evaluate(()=>document.activeElement?.id);
  const isAbove=()=>page.evaluate(()=>document.querySelector('#command').getBoundingClientRect().bottom<document.querySelector('#terminal').getBoundingClientRect().top);
  assert.equal(await isAbove(),false);
  await page.click('#terminal',{position:{x:100,y:100}});
  assert.equal(await focused(),'command');
  await page.keyboard.type('hello');assert.equal(await page.inputValue('#command'),'hello');
- await page.click('#host');assert.equal(await focused(),'host');
+ await page.click('#secret');assert.equal(await focused(),'secret');await page.uncheck('#secret');
  await page.click('.brand strong');assert.equal(await focused(),'command');
  // Dragging terminal text keeps the terminal focused for copy.
  const box=await page.locator('#terminal').boundingBox();
@@ -25,9 +25,9 @@ try {
  await page.selectOption('#commandPosition','top');await page.click('#save');
  await page.waitForFunction(()=>!document.querySelector('#dialog').open);
  assert.equal(await isAbove(),true);assert.equal(await page.inputValue('#command'),'hello');
- await page.screenshot({path:'docs/chat-layout-preview.png'});
+ await page.screenshot({path:process.env.CHAT_SCREENSHOT || 'docs/chat-layout-preview.png'});
  await app.close();app=await launch();page=await app.firstWindow();page.on('pageerror',e=>errors.push(e.message));
- await page.waitForFunction(()=>document.querySelector('#host').value.length>0);
+ await page.waitForFunction(()=>document.querySelector('#app-version').textContent.length>0);
  assert.equal(await isAbove(),true);
  await page.click('#terminal',{position:{x:100,y:100}});assert.equal(await focused(),'command');
  await page.click('#settings');await page.selectOption('#commandPosition','bottom');await page.click('#save');

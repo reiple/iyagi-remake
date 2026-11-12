@@ -1,6 +1,6 @@
 {
   "name": "iyagi-mud",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "description": "퇴마요새 머드 클라이언트",
   "author": "Iyagi Mud contributors",
@@ -24,7 +24,8 @@
       "package.json"
     ],
     "win": {
-      "signAndEditExecutable": false
+      "icon": "assets/icon.png",
+      "signExecutable": false
     }
   },
   "dependencies": {

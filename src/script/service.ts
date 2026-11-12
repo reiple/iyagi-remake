@@ -31,14 +31,16 @@ export class ScriptService {
     this.stop();
     this.compiled = undefined;
     this.compiledText = "";
-    this.sourceFile = fs.realpathSync(file);
-    const decoded = decodeSource(readSource(this.sourceFile));
+    const sourceFile = fs.realpathSync(file);
+    const bytes = readSource(sourceFile);
+    const decoded = decodeSource(bytes);
     if (encoding !== "auto")
       Object.assign(
         decoded,
-        decodeSource(readSource(this.sourceFile), encoding),
+        decodeSource(bytes, encoding),
       );
-    return { ...decoded, file: this.sourceFile };
+    this.sourceFile = sourceFile;
+    return { ...decoded, file: sourceFile };
   }
   setHeaderRoot(root: string) {
     this.stop();
@@ -104,7 +106,7 @@ export class ScriptService {
     });
     this.worker = worker;
     this.state = "running";
-    this.options.event({ type: "state", state: this.state });
+    this.options.event({ type: "state", state: this.state, fileName: path.basename(this.sourceFile) });
     worker.on("message", (m) => {
       if (this.worker !== worker) return;
       if (m.type === "request") {
@@ -175,11 +177,7 @@ export class ScriptService {
     worker.on("exit", (code) => {
       if (this.worker === worker) {
         this.worker = undefined;
-        this.state = "error";
-        this.options.event({
-          type: "failure",
-          error: "실행 엔진이 종료되었습니다: " + code,
-        });
+        this.fail("실행 엔진이 종료되었습니다: " + code);
       }
     });
   }

@@ -1,11 +1,12 @@
 import { ScriptService } from "./script/service";
-import { app, BrowserWindow, ipcMain, dialog } from "electron";
+import { app, BrowserWindow, ipcMain, dialog, Menu } from "electron";
 import path from "node:path";
 import fs from "node:fs";
 import iconv from "iconv-lite";
 import { Connection } from "./core/connection";
 import { CommandQueue, expand, TriggerEngine } from "./core/commands";
 import { defaults, validateSettings } from "./core/settings";
+import { validateProfiles, type Profile } from "./core/profiles";
 let win: BrowserWindow;
 let settings = defaults();
 let configPath = "";
@@ -85,13 +86,25 @@ app.whenReady().then(() => {
   }
   queue.interval = settings.interval;
   triggers = new TriggerEngine(settings.rules);
+  const profilesPath = path.join(app.getPath("userData"), "connection-profiles.json");
+  const { host, port, encoding } = settings;
+  let profiles: Profile[] = [{ name: host === defaults().host ? "퇴마요새" : host, host, port, encoding }];
+  try {
+    if (fs.existsSync(profilesPath))
+      profiles = validateProfiles(JSON.parse(fs.readFileSync(profilesPath, "utf8")));
+  } catch {
+    warning += " 접속 프로필을 읽지 못해 기존 접속 설정을 사용합니다.";
+  }
+  const version = app.getVersion().replace(/^(\d+\.\d+)\.0$/, "$1");
+  const icon = path.join(__dirname, "icon.png");
   win = new BrowserWindow({
     width: 1280,
     height: 880,
     minWidth: 850,
     minHeight: 600,
-    backgroundColor: "#0b1019",
-    title: "이야기 · 퇴마요새",
+    backgroundColor: "#181919",
+    title: `이야기 MUD · v${version}`,
+    icon,
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
       contextIsolation: true,
@@ -99,7 +112,31 @@ app.whenReady().then(() => {
       sandbox: true,
     },
   });
-  win.setMenuBarVisibility(false);
+  function updateMenu() {
+    Menu.setApplicationMenu(Menu.buildFromTemplate([
+      { label: "접속(&C)", submenu: [
+        { id: "connect-profiles", label: "서버 연결", enabled: !connection.socket, submenu: profiles.map((profile, index) => ({
+          id: `connect-profile-${index}`,
+          label: profile.name.replaceAll("&", "&&"),
+          click: () => {
+            if (connection.socket) return;
+            stop();
+            manualSecret = false;
+            notify("profile-connected", profile);
+            connection.connect(profile.host, profile.port, profile.encoding);
+          },
+        })) },
+        { id: "disconnect-profile", label: "연결 종료", enabled: !!connection.socket, click: () => connection.disconnect() },
+        { type: "separator" },
+        { id: "manage-profiles", label: "프로필 관리…", click: () => notify("open-profiles", profiles) },
+      ] },
+      { label: "도움말(&H)", submenu: [{ id: "about", label: "이야기 정보", click: () => {
+        void dialog.showMessageBox(win, { title: "이야기 정보", message: "이야기 MUD", detail: `버전 v${version}\nWindows용 MUD 클라이언트`, icon });
+      } }] },
+    ]));
+  }
+  updateMenu();
+  connection.on("status", updateMenu);
   win.webContents.setWindowOpenHandler(() => ({ action: "deny" }));
   win.webContents.on("will-navigate", (e) => e.preventDefault());
   win.webContents.session.setPermissionRequestHandler((_w, _p, cb) =>
@@ -178,7 +215,15 @@ app.whenReady().then(() => {
         return r.filePath;
       }
       case "load":
-        return { settings, warning };
+        return { settings, warning, version, profile: profiles[0] };
+      case "save-profiles": {
+        const next = validateProfiles(payload);
+        fs.writeFileSync(profilesPath + ".tmp", JSON.stringify(next, null, 2), "utf8");
+        fs.renameSync(profilesPath + ".tmp", profilesPath);
+        profiles = next;
+        updateMenu();
+        return profiles[0];
+      }
       case "save": {
         const next = validateSettings(payload);
         if (fs.existsSync(configPath))
@@ -191,16 +236,6 @@ app.whenReady().then(() => {
         triggers = new TriggerEngine(settings.rules);
         return true;
       }
-      case "connect": {
-        const s = validateSettings(payload);
-        stop();
-        manualSecret = false;
-        connection.connect(s.host, s.port, s.encoding);
-        return true;
-      }
-      case "disconnect":
-        connection.disconnect();
-        return true;
       case "send": {
         if (
           !payload ||
