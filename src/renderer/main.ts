@@ -75,6 +75,11 @@ function apply() {
   $("address").textContent = settings.host + ":" + settings.port;
   term.options.fontFamily = settings.font;
   term.options.fontSize = settings.fontSize;
+  const area = document.querySelector<HTMLElement>(".command-area")!;
+  const terminal = $("terminal");
+  if (settings.commandPosition === "top") terminal.before(area);
+  else terminal.after(area);
+  area.classList.toggle("above-terminal", settings.commandPosition === "top");
   resize();
   $("buttons").replaceChildren(
     ...settings.buttons.map((b, i) => {
@@ -211,7 +216,7 @@ function keyName(e: KeyboardEvent) {
 }
 function openSettings() {
   edit = structuredClone(settings);
-  ["font", "fontSize", "interval", "delay"].forEach(
+  ["font", "fontSize", "interval", "delay", "commandPosition"].forEach(
     (k) => (input(k).value = String((edit as any)[k])),
   );
   input("alias-text").value = edit.aliases.join("\n");
@@ -296,6 +301,7 @@ $("import").onclick = () =>
     })
     .catch(() => {});
 $("save").onclick = async () => {
+  edit.commandPosition = input("commandPosition").value as Settings["commandPosition"];
   edit.font = input("font").value;
   edit.fontSize = Number(input("fontSize").value);
   edit.interval = Number(input("interval").value);
@@ -368,9 +374,27 @@ void request("load")
     term.writeln("\x1b[38;2;108;219;193m  이야기 · MUD\x1b[0m");
     term.writeln("\r\n  퇴마요새로 이어지는 새로운 창\r\n");
     term.writeln("  왼쪽의 서버 연결을 누르면 게임 화면이 표시됩니다.");
-    term.writeln("  명령은 아래 입력창에, 자주 쓰는 명령은 단축버튼에.\r\n");
+    term.writeln("  명령은 채팅 입력창에, 자주 쓰는 명령은 단축버튼에.\r\n");
     term.writeln("\x1b[90m  연결 전 안내 화면입니다.\x1b[0m");
   })
   .catch(() => {});
 
 setupScriptUi();
+
+// Keep selection and interactive controls usable while making background clicks ready for chat.
+let pointerStart: { x: number; y: number } | undefined;
+document.addEventListener("pointerdown", (e) => {
+  pointerStart = e.button === 0 ? { x: e.clientX, y: e.clientY } : undefined;
+}, true);
+document.addEventListener("click", (e) => {
+  const start = pointerStart;
+  pointerStart = undefined;
+  if (!start || e.button !== 0 || e.detail > 1 || composing || document.querySelector("dialog[open]")) return;
+  if (Math.hypot(e.clientX - start.x, e.clientY - start.y) > 5) return;
+  const target = e.target;
+  if (!(target instanceof Element)) return;
+  const inTerminal = !!target.closest("#terminal");
+  if (!inTerminal && target.closest('input, textarea, select, button, a, label, [contenteditable], [role="button"]')) return;
+  if (window.getSelection()?.toString() || (inTerminal && term.hasSelection())) return;
+  input("command").focus({ preventScroll: true });
+});

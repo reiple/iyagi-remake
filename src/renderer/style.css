@@ -457,3 +457,8 @@ textarea {
 #script-input-value {
   flex: 1;
 }
+
+.command-area.above-terminal {
+  padding-top: 0;
+  padding-bottom: 16px;
+}
