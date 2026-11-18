@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>이야기 · 혼잣말 관리</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="이야기 홈"
+        ><span class="brand-mark">이</span><strong>이야기</strong
+        ><span class="brand-divider"></span
+        ><span class="brand-section">혼잣말 관리</span></a
+      >
+      <div class="server-status">
+        <span class="status-dot" id="server-dot"></span
+        ><span id="server-state">서버 확인 중</span>
+      </div>
+    </header>
+    <main>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">YOUR CHARACTERS, ALWAYS IN MOTION</p>
+          <h1>캐릭터 관리</h1>
+          <p class="subtitle">
+            여러 캐릭터의 접속과 혼잣말을 한곳에서 관리하세요.
+          </p>
+        </div>
+        <button class="button primary" id="add-open">
+          <span aria-hidden="true">＋</span> 캐릭터 추가
+        </button>
+      </section>
+      <section class="summary" aria-label="실행 현황">
+        <div class="summary-item">
+          <span class="summary-label">등록된 캐릭터</span>
+          <div><strong id="count-total">0</strong><span>명</span></div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label"
+            ><i class="dot green"></i>서버 접속 중</span
+          >
+          <div><strong id="count-connected">0</strong><span>명</span></div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label"
+            ><i class="dot amber"></i>혼잣말 실행 중</span
+          >
+          <div><strong id="count-running">0</strong><span>개</span></div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label"
+            ><i class="dot blue"></i>입력 대기 중</span
+          >
+          <div><strong id="count-waiting">0</strong><span>개</span></div>
+        </div>
+      </section>
+      <div class="notice">
+        <span class="notice-icon" aria-hidden="true">↻</span>
+        <p>
+          <strong>화면을 닫아도 혼잣말은 계속됩니다.</strong
+          ><span> 접속과 실행은 백그라운드 컨테이너가 관리합니다.</span>
+        </p>
+        <span class="notice-tag">BACKGROUND</span>
+      </div>
+      <section class="characters-panel" aria-labelledby="characters-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="characters-title">
+              내 캐릭터 <span id="list-count">0</span>
+            </h2>
+            <p>캐릭터별로 접속하고, 혼잣말을 실행하세요.</p>
+          </div>
+          <span class="live-label"><i class="dot green"></i>실시간 상태</span>
+        </div>
+        <div class="table-head" aria-hidden="true">
+          <span>캐릭터</span><span>접속 상태</span><span>혼잣말</span
+          ><span>관리</span>
+        </div>
+        <div id="character-list" aria-label="캐릭터 목록"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <div class="empty-icon" aria-hidden="true">＋</div>
+          <h3>첫 번째 캐릭터를 추가하세요</h3>
+          <p>
+            이름과 암호를 등록하면 여기에서 접속과 혼잣말을 관리할 수 있습니다.
+          </p>
+          <button class="button secondary" id="empty-add">
+            캐릭터 추가하기 <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="loading-state" id="loading-state">
+          캐릭터 목록을 불러오는 중입니다…
+        </div>
+      </section>
+      <footer>
+        <span>이야기 · 퇴마요새 혼잣말</span
+        ><span>텍스트 화면을 열 때만 게임 입력과 출력이 표시됩니다.</span>
+      </footer>
+    </main>
+    <div class="toast" id="toast" role="status" hidden></div>
+
+    <dialog id="add-dialog" class="small-dialog" aria-labelledby="add-title">
+      <form id="add-form">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">NEW CHARACTER</span>
+            <h2 id="add-title">캐릭터 추가</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            data-close="add-dialog"
+            aria-label="캐릭터 추가 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <p class="dialog-description">
+          퇴마요새에서 사용하는 캐릭터 정보를 입력하세요.
+        </p>
+        <label for="character-name">캐릭터 이름</label
+        ><input
+          id="character-name"
+          name="name"
+          required
+          maxlength="40"
+          autocomplete="off"
+          placeholder="캐릭터 이름 입력"
+        />
+        <label for="character-password">암호</label
+        ><input
+          id="character-password"
+          name="password"
+          type="password"
+          required
+          maxlength="200"
+          autocomplete="new-password"
+          placeholder="암호 입력"
+        />
+        <p class="field-hint">
+          암호는 서버의 데이터 볼륨에 암호화하여 보관합니다.
+        </p>
+        <p class="form-error" id="add-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="button ghost" data-close="add-dialog">
+            취소</button
+          ><button type="submit" class="button primary" id="add-submit">
+            캐릭터 추가
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      id="script-dialog"
+      class="small-dialog"
+      aria-labelledby="script-title"
+    >
+      <form id="script-form">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow" id="script-character"></span>
+            <h2 id="script-title">혼잣말 파일 지정</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            data-close="script-dialog"
+            aria-label="혼잣말 파일 지정 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <p class="dialog-description">
+          SCS 소스와 필요한 헤더를 함께 선택하세요. 파일을 확인하고 번역한 뒤
+          캐릭터에 저장합니다.
+        </p>
+        <label for="script-file"
+          >혼잣말 소스 <span class="label-tag">필수</span></label
+        ><input id="script-file" type="file" accept=".scs,.txt" required />
+        <label for="header-files"
+          >사용자 헤더 <span class="optional">선택</span></label
+        ><input id="header-files" type="file" accept=".h" multiple />
+        <p class="field-hint">
+          UTF-8·CP949·조합형을 자동 감지합니다. I.H와 ENGLISH.H는 기본
+          지원합니다. 소스와 헤더 합계 최대 4MB.
+        </p>
+        <p class="form-error" id="script-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="button ghost" data-close="script-dialog">
+            취소</button
+          ><button type="submit" class="button primary" id="script-submit">
+            번역하고 저장
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      id="text-dialog"
+      class="terminal-dialog"
+      aria-labelledby="text-title"
+    >
+      <div class="terminal-heading">
+        <div class="terminal-title">
+          <span class="terminal-symbol" aria-hidden="true">&gt;_</span>
+          <div>
+            <h2 id="text-title">텍스트 화면</h2>
+            <p id="text-status"></p>
+          </div>
+        </div>
+        <div class="terminal-tools">
+          <label class="check-label"
+            ><input id="auto-scroll" type="checkbox" checked /> 자동
+            스크롤</label
+          ><button
+            class="icon-button"
+            data-close="text-dialog"
+            aria-label="텍스트 화면 닫기"
+          >
+            ×
+          </button>
+        </div>
+      </div>
+      <div class="login-help" id="login-help" hidden>
+        <span
+          >자동 로그인이 진행되지 않으면 아래에서 안내에 따라 입력한 뒤 로그인
+          완료를 확인하세요.</span
+        ><button class="button small secondary" id="confirm-login">
+          로그인 완료 확인
+        </button>
+      </div>
+      <pre
+        id="terminal-output"
+        tabindex="0"
+        aria-label="서버 및 혼잣말 출력"
+      ></pre>
+      <form id="answer-form" class="answer-form" hidden>
+        <label for="answer-text" id="answer-prompt">혼잣말 입력</label>
+        <div class="input-row">
+          <input
+            id="answer-text"
+            autocomplete="off"
+            placeholder="혼잣말에 전달할 응답"
+          /><button class="button primary" type="submit">응답 보내기</button>
+        </div>
+      </form>
+      <form id="command-form" class="command-form">
+        <div class="command-caption">
+          <label for="command-input">게임 명령</label
+          ><label class="check-label"
+            ><input type="checkbox" id="command-secret" /> 비밀 입력</label
+          >
+        </div>
+        <div class="input-row">
+          <span class="command-prompt" aria-hidden="true">›</span
+          ><input
+            id="command-input"
+            autocomplete="off"
+            placeholder="명령을 입력하고 Enter를 누르세요"
+            maxlength="16000"
+          /><button class="button primary" type="submit" id="command-send">
+            전송 <span aria-hidden="true">↵</span>
+          </button>
+        </div>
+        <p class="terminal-hint">
+          이 창을 닫아도 접속과 혼잣말 실행은 유지됩니다.
+        </p>
+      </form>
+      <p id="text-error" class="terminal-error" role="alert"></p>
+    </dialog>
+
+    <dialog
+      id="delete-dialog"
+      class="small-dialog"
+      aria-labelledby="delete-title"
+    >
+      <form id="delete-form">
+        <div class="dialog-heading">
+          <h2 id="delete-title">캐릭터 삭제</h2>
+          <button
+            type="button"
+            class="icon-button"
+            data-close="delete-dialog"
+            aria-label="삭제 창 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <p class="dialog-description" id="delete-description"></p>
+        <p class="form-error" id="delete-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button class="button ghost" type="button" data-close="delete-dialog">
+            취소</button
+          ><button class="button danger" type="submit">삭제</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

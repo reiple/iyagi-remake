@@ -4,6 +4,10 @@
 
 현재 버전: **0.3** · [버전별 변경점](CHANGELOG.md) · [전체 작업 현황과 구조](docs/project-status.md) · [혼잣말 사용 안내](docs/monologue-guide.md)
 
+여러 캐릭터의 혼잣말을 브라우저에서 관리하려면 별도 [혼잣말 웹앱](web-monologue/README.md)을 사용하세요. Docker / Docker Compose로 실행하며 브라우저를 닫아도 컨테이너에서 접속과 실행을 유지합니다.
+
+웹앱 구현, 로그인 순서와 파일명 오류 수정, 최신 검증 결과는 [웹앱 작업 기록](docs/web-monologue-progress.md)에 정리했습니다.
+
 저장소에는 소스와 문서가 포함됩니다. 새로 clone한 환경에서는 아래 개발 절차로 빌드하세요.
 
 ## 실행
