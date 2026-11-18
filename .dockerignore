@@ -1,0 +1,11 @@
+**
+!src/
+!src/**
+!web-monologue/
+!web-monologue/**
+web-monologue/node_modules/
+web-monologue/dist/
+web-monologue/data/
+web-monologue/test-results/
+web-monologue/.env*
+web-monologue/*.log
