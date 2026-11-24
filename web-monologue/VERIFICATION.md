@@ -1,5 +1,13 @@
 # 검증 기록 — 2026-11-18
 
+## 루트 Dockerfile과 실행 문서 — 2026-11-24
+
+- 기존 Dockerfile을 저장소 루트로 이동하고 Compose 빌드 경로를 맞췄다. 루트 README에 이미지 빌드, 단독 실행, 접속, 상태 확인, 중지·재시작·갱신과 볼륨 보존 절차를 추가했다.
+- `docker build -t iyagi-web-monologue:local .` 및 `docker compose -f web-monologue/compose.yaml build web` 실제 빌드 성공. Compose 구성 검사도 통과했다.
+- 별도 테스트 컨테이너에서 HTML HTTP 200, `/health` 정상 응답, 실행 사용자 `uid=1000(node)`를 확인했다.
+- 기존 `tests/container-smoke.mjs`로 캐릭터 생성, 소스 번역·저장, 재시작 및 컨테이너 삭제·재생성 후 같은 볼륨에서의 복구와 API 암호 비노출을 확인했다. 임의 호스트 포트는 재시작 때 변경되어 `docker port`로 다시 조회한 뒤 검증했다.
+- 웹앱 빌드, TypeScript 검사와 기존 엔진 31개·웹앱 16개, 총 47개 테스트가 통과했다. 실제 게임 계정으로 접속하지 않았다.
+
 ## 커밋 준비 시점 최종 재검증
 
 - 최초 PR 병합 시 기존 엔진 31개와 웹앱 14개, 전체 **45개 테스트** 통과. 후속 LAN 접속 변경의 검증 결과는 아래 별도 항목에 기록한다.
