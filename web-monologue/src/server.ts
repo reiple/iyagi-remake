@@ -7,7 +7,10 @@ import {
   type ScriptUpload,
 } from "./sessions";
 
-type AppOptions = ManagerOptions & { publicDir: string };
+type AppOptions = ManagerOptions & {
+  publicDir: string;
+  allowedHosts?: string[];
+};
 class HttpError extends Error {
   constructor(
     public status: number,
@@ -39,6 +42,11 @@ async function readJson(request: http.IncomingMessage) {
 }
 
 export function createApp(options: AppOptions) {
+  const allowedHosts = new Set(
+    ["localhost", "127.0.0.1", "[::1]", ...(options.allowedHosts || [])].map(
+      (host) => host.trim().toLowerCase(),
+    ),
+  );
   const manager = new SessionManager(options);
   const server = http.createServer(async (request, response) => {
     const json = (status: number, value: unknown) => {
@@ -57,8 +65,11 @@ export function createApp(options: AppOptions) {
     );
     try {
       const host = request.headers.host;
-      if (!host || !/^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/i.test(host))
-        throw new HttpError(403, "로컬 접속 주소를 사용하세요.");
+      const hostname = host
+        ?.match(/^(\[[0-9a-f:]+\]|[a-z0-9.-]+)(?::\d+)?$/i)?.[1]
+        .toLowerCase();
+      if (!hostname || !allowedHosts.has(hostname))
+        throw new HttpError(403, "허용된 서버 주소로 접속하세요.");
       if (request.headers.origin && request.headers.origin !== `http://${host}`)
         throw new HttpError(403, "허용되지 않은 요청 출처입니다.");
       const url = new URL(request.url || "/", `http://${host}`);

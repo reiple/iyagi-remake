@@ -28,6 +28,51 @@ $env:WEB_PORT = '3100'
 docker compose up -d
 ```
 
+## 같은 공유기·사내망의 다른 PC에서 접속
+
+LAN 접속을 켠 PC의 IPv4 주소를 사용합니다. 예를 들어 서버 PC 주소가 `192.168.1.9`이면 다른 PC에서 **http://192.168.1.9:3000**을 여세요. 다른 PC의 `localhost`는 그 PC 자신을 가리킵니다.
+
+이 모드에서는 같은 네트워크에서 접속하는 사람이 저장된 캐릭터와 혼잣말을 관리할 수 있습니다. 신뢰하는 LAN에서 사용하세요. 공유기의 인터넷 포트 포워딩은 필요하지 않습니다.
+
+### 현재 Windows PC에서 Node로 실행
+
+기존 웹 서버를 종료한 뒤, 이 폴더의 PowerShell에서 실행합니다. 서버 재시작은 기존 게임 접속과 혼잣말을 종료하므로 다시 접속·실행해야 합니다.
+
+```powershell
+npm run build
+.\start-lan.ps1
+# LAN 주소가 여러 개라면 이 PC의 주소를 지정합니다.
+.\start-lan.ps1 -LanAddress 192.168.1.9 -Port 3000
+```
+
+실행 창을 유지하세요. 스크립트는 LAN IPv4 주소를 자동으로 찾고 `LISTEN_HOST=0.0.0.0`, `WEB_ALLOWED_HOSTS=<LAN 주소>`, `PORT=3000`을 설정한 뒤 서버를 실행합니다. 종료 시 이전 환경 변수 값으로 복원합니다. 기본 데이터 위치는 그대로 `data/`이며 `http://localhost:3000`도 유지됩니다.
+
+Windows 방화벽 허용은 최초 한 번 **관리자 PowerShell**에서 실행합니다. 지정한 서버 IPv4 주소의 TCP 포트에 대해 같은 서브넷에서 오는 연결만 허용하며, 네트워크 프로필이나 다른 포트의 방화벽 설정은 바꾸지 않습니다.
+
+```powershell
+.\enable-lan-firewall.ps1 -LanAddress 192.168.1.9 -Port 3000
+```
+
+DHCP로 서버 IP가 바뀌면 새 주소로 실행하고 방화벽 규칙도 다시 설정하세요. 공유기에서 서버 PC의 IP를 예약하면 같은 주소를 계속 사용할 수 있습니다.
+
+### Docker Compose로 LAN 접속
+
+```powershell
+$env:WEB_BIND_HOST = '0.0.0.0'
+$env:WEB_ALLOWED_HOSTS = '192.168.1.9'
+docker compose up -d --build
+```
+
+`WEB_BIND_HOST`의 기본값은 `127.0.0.1`이므로 설정하지 않으면 로컬 전용입니다. `WEB_ALLOWED_HOSTS`에는 포트나 `http://` 없이 서버 IP·호스트명을 쉼표로 구분해 넣습니다. 예: `192.168.1.9,mud-pc`. 호스트명으로 접속하려면 다른 PC에서도 그 이름을 서버 IP로 해석할 수 있어야 합니다. localhost·루프백은 항상 허용하며, 미등록 Host와 다른 Origin의 요청은 거부합니다.
+
+Docker 없이 직접 환경 변수를 지정해 실행해도 됩니다.
+
+```powershell
+$env:LISTEN_HOST = '0.0.0.0'
+$env:WEB_ALLOWED_HOSTS = '192.168.1.9'
+npm start
+```
+
 ## Docker 단독 실행
 
 기존 엔진 소스를 함께 번들하므로 **저장소 루트**를 빌드 컨텍스트로 사용합니다.

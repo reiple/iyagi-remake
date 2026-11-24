@@ -6,8 +6,9 @@ services:
       context: ..
       dockerfile: web-monologue/Dockerfile
     ports:
-      - "127.0.0.1:${WEB_PORT:-3000}:3000"
+      - "${WEB_BIND_HOST:-127.0.0.1}:${WEB_PORT:-3000}:3000"
     environment:
+      WEB_ALLOWED_HOSTS: ${WEB_ALLOWED_HOSTS:-}
       MUD_HOST: ${MUD_HOST:-xmud.ddnsfree.com}
       MUD_PORT: ${MUD_PORT:-6666}
     volumes:
