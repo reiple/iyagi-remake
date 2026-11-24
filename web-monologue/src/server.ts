@@ -42,11 +42,15 @@ async function readJson(request: http.IncomingMessage) {
 }
 
 export function createApp(options: AppOptions) {
-  const allowedHosts = new Set(
-    ["localhost", "127.0.0.1", "[::1]", ...(options.allowedHosts || [])].map(
-      (host) => host.trim().toLowerCase(),
-    ),
+  const publicHosts = new Set(
+    (options.allowedHosts || []).map((host) => host.trim().toLowerCase()),
   );
+  const allowedHosts = new Set([
+    "localhost",
+    "127.0.0.1",
+    "[::1]",
+    ...publicHosts,
+  ]);
   const manager = new SessionManager(options);
   const server = http.createServer(async (request, response) => {
     const json = (status: number, value: unknown) => {
@@ -70,7 +74,11 @@ export function createApp(options: AppOptions) {
         .toLowerCase();
       if (!hostname || !allowedHosts.has(hostname))
         throw new HttpError(403, "허용된 서버 주소로 접속하세요.");
-      if (request.headers.origin && request.headers.origin !== `http://${host}`)
+      if (
+        request.headers.origin &&
+        request.headers.origin !== `http://${host}` &&
+        !(publicHosts.has(hostname) && request.headers.origin === `https://${host}`)
+      )
         throw new HttpError(403, "허용되지 않은 요청 출처입니다.");
       const url = new URL(request.url || "/", `http://${host}`);
       const method = request.method || "GET";
