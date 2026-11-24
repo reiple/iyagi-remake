@@ -10,6 +10,64 @@
 
 저장소에는 소스와 문서가 포함됩니다. 새로 clone한 환경에서는 아래 개발 절차로 빌드하세요.
 
+## Docker로 웹페이지 실행
+
+Docker Desktop(Linux 컨테이너 모드) 또는 Docker Engine이 실행 중이어야 합니다. Node.js를 호스트에 설치할 필요는 없습니다. 아래 명령은 **저장소 루트**(`Dockerfile`이 있는 폴더)에서 실행하세요.
+
+### 이미지 빌드
+
+```powershell
+docker build -t iyagi-web-monologue:local .
+```
+
+루트 `Dockerfile`은 Node.js 24 빌드 단계에서 웹앱과 공용 Telnet/SCS 엔진을 번들하고, 실행 이미지에는 서버·Worker·정적 웹 파일을 복사합니다. 컨테이너는 일반 사용자 `node`로 실행됩니다.
+
+### 컨테이너 실행과 접속
+
+```powershell
+docker run -d --name iyagi-monologue --restart unless-stopped --init -p 127.0.0.1:3000:3000 -v iyagi-monologue-data:/app/data iyagi-web-monologue:local
+```
+
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 여세요. 웹앱은 컨테이너 내부의 `0.0.0.0:3000`에서 실행되며, 위 명령은 현재 PC의 `127.0.0.1:3000`으로 공개합니다. 호스트의 3000 포트를 이미 사용 중이면 `-p 127.0.0.1:3100:3000`으로 바꾸고 [http://localhost:3100](http://localhost:3100)으로 접속하세요.
+
+```powershell
+docker ps --filter name=iyagi-monologue
+docker logs -f iyagi-monologue
+docker inspect --format '{{.State.Health.Status}}' iyagi-monologue
+```
+
+로그 보기는 Ctrl+C로 끝낼 수 있으며 컨테이너는 계속 실행됩니다. 상태 검사는 시작 직후 `starting`이며, 서버가 정상 기동하면 `healthy`로 바뀝니다. [상태 확인 주소](http://localhost:3000/health)에서도 `{"ok":true}` 응답을 확인할 수 있습니다.
+
+### 중지·재시작·이미지 갱신
+
+```powershell
+docker stop iyagi-monologue
+docker start iyagi-monologue
+```
+
+소스를 갱신한 뒤 이미지를 다시 빌드했다면 기존 컨테이너를 중지·삭제하고 위 `docker run` 명령으로 새 컨테이너를 만드세요.
+
+```powershell
+docker build -t iyagi-web-monologue:local .
+docker stop iyagi-monologue
+docker rm iyagi-monologue
+# 위의 docker run 명령을 다시 실행
+```
+
+캐릭터 정보·암호화 키·업로드한 소스는 `iyagi-monologue-data` 볼륨에 보관되어 컨테이너를 삭제해도 유지됩니다. 같은 볼륨을 지정하면 새 컨테이너에서도 복구됩니다. 브라우저를 닫아도 게임 접속과 혼잣말 실행은 계속되지만, 컨테이너를 중지하거나 재생성하면 종료되며 다시 로그인·실행해야 합니다.
+
+### Docker Compose 사용
+
+Compose를 사용할 때도 저장소 루트에서 실행할 수 있습니다.
+
+```powershell
+docker compose -f web-monologue/compose.yaml up -d --build
+docker compose -f web-monologue/compose.yaml logs -f web
+docker compose -f web-monologue/compose.yaml down
+```
+
+Compose는 단독 실행 예시와 별도의 데이터 볼륨을 사용합니다. 데이터를 보존하려면 실행 방식을 유지하고 `down -v`나 데이터 볼륨 삭제를 사용하지 마세요. 캐릭터 등록·혼잣말 사용법과 다른 PC에서의 LAN 접속 설정은 [웹앱 README](web-monologue/README.md)를 참고하세요.
+
 ## 실행
 
 Windows 배포 ZIP을 모두 풀고 `Iyagi Mud.exe`를 실행하세요. ZIP을 만드는 방법과 배포 절차는 [Windows 배포 안내](docs/distribution.md)를 참고하세요. 소스에서 개발할 때는 `npm run build` 후 `npm start`로 실행할 수 있습니다.

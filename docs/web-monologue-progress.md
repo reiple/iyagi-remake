@@ -16,7 +16,7 @@
 | `web-monologue/src/server.ts`, `main.ts` | 로컬 HTTP API, 정적 파일 제공과 서버 수명 관리 |
 | `web-monologue/public/` | 한국어 캐릭터 목록과 추가·파일 지정·텍스트 다이얼로그 |
 | `web-monologue/build.mjs` | 기존 엔진을 포함하는 독립 서버·Worker 번들 |
-| `web-monologue/Dockerfile`, `compose.yaml` | 비루트 컨테이너, 상태 확인, 데이터 볼륨, 재시작 정책 |
+| 루트 `Dockerfile`, `web-monologue/compose.yaml` | 비루트 컨테이너, 상태 확인, 데이터 볼륨, 재시작 정책 |
 
 기본 웹 주소는 `http://localhost:3000`이며 호스트 공개 범위는 `127.0.0.1`이다. 별도 웹 로그인 기능은 제공하지 않는다. 캐릭터 암호와 업로드 소스는 서버 데이터 디렉터리에 보관하며, API는 암호를 반환하지 않는다. 암호화 키와 계정 파일은 함께 백업해야 한다.
 

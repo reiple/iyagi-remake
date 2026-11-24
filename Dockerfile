@@ -1,3 +1,4 @@
+# Build from the repository root so the shared Telnet and SCS engine is included.
 FROM node:24-bookworm-slim AS build
 WORKDIR /app/web-monologue
 COPY web-monologue/package.json web-monologue/package-lock.json ./

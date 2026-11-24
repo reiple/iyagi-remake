@@ -79,7 +79,7 @@ npm start
 
 ```powershell
 cd F:\codex\iyagi
-docker build -f web-monologue/Dockerfile -t iyagi-web-monologue:local .
+docker build -t iyagi-web-monologue:local .
 docker run -d --name iyagi-monologue --restart unless-stopped --init -p 127.0.0.1:3000:3000 -v iyagi-monologue-data:/app/data iyagi-web-monologue:local
 ```
 
