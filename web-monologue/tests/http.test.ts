@@ -4,8 +4,42 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import net from "node:net";
+import http from "node:http";
 import iconv from "iconv-lite";
 import { createApp } from "../src/server";
+
+const requestWithHost = (
+  url: string,
+  host: string,
+  body?: unknown,
+  origin?: string,
+) =>
+  new Promise<{ status: number; text: string }>((resolve, reject) => {
+    const request = http.request(
+      url,
+      {
+        method: body === undefined ? "GET" : "POST",
+        headers: {
+          Host: host,
+          "Content-Type": "application/json",
+          "X-Iyagi-Request": "1",
+          ...(origin ? { Origin: origin } : {}),
+        },
+      },
+      (response) => {
+        let text = "";
+        response.setEncoding("utf8");
+        response.on("data", (chunk) => {
+          text += chunk;
+        });
+        response.on("end", () =>
+          resolve({ status: response.statusCode!, text }),
+        );
+      },
+    );
+    request.on("error", reject);
+    request.end(body === undefined ? undefined : JSON.stringify(body));
+  });
 
 test("HTTP API는 암호를 반환하지 않고 외부 Origin과 잘못된 요청을 거부한다", async () => {
   const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "iyagi-http-"));
@@ -100,6 +134,81 @@ test("HTTP API는 암호를 반환하지 않고 외부 Origin과 잘못된 요�
       403,
     );
     assert.equal((await fetch(base + "/health")).status, 200);
+  } finally {
+    await app.close();
+    fs.rmSync(dataDir, { recursive: true, force: true });
+  }
+});
+
+test("LAN 주소는 명시적으로 허용하고 같은 Origin의 API 요청만 처리한다", async () => {
+  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "iyagi-lan-"));
+  const app = createApp({
+    dataDir,
+    workerPath: "unused",
+    publicDir: path.resolve(__dirname, "../public"),
+    allowedHosts: ["192.168.50.7", "MUD-PC"],
+  });
+  await new Promise<void>((resolve) =>
+    app.server.listen(0, "127.0.0.1", resolve),
+  );
+  const port = (app.server.address() as net.AddressInfo).port;
+  const base = `http://127.0.0.1:${port}`;
+  const lanHost = `192.168.50.7:${port}`;
+  const request = (host: string, origin?: string) =>
+    requestWithHost(
+      base + "/api/characters",
+      host,
+      { name: "LAN검증", password: "synthetic-password" },
+      origin,
+    );
+  try {
+    assert.equal((await requestWithHost(base + "/", lanHost)).status, 200);
+    assert.equal(
+      (await requestWithHost(base + "/health", `mud-pc:${port}`)).status,
+      200,
+    );
+    assert.equal(
+      (await request(lanHost, "http://outside.example")).status,
+      403,
+    );
+    assert.equal((await request(`192.168.50.8:${port}`)).status, 403);
+    assert.equal((await request(`outside.example:${port}`)).status, 403);
+    assert.equal(
+      (await request(`192.168.50.7.outside.example:${port}`)).status,
+      403,
+    );
+    assert.equal((await request(lanHost, `http://${lanHost}`)).status, 201);
+    const response = await requestWithHost(base + "/api/characters", lanHost);
+    const { characters } = JSON.parse(response.text);
+    assert.equal(characters[0].name, "LAN검증");
+    assert.ok(!JSON.stringify(characters).includes("synthetic-password"));
+    assert.equal((await fetch(base + "/health")).status, 200);
+  } finally {
+    await app.close();
+    fs.rmSync(dataDir, { recursive: true, force: true });
+  }
+});
+
+test("기본 설정은 LAN Host와 비정상 Host를 거부한다", async () => {
+  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "iyagi-local-host-"));
+  const app = createApp({
+    dataDir,
+    workerPath: "unused",
+    publicDir: path.resolve(__dirname, "../public"),
+  });
+  await new Promise<void>((resolve) =>
+    app.server.listen(0, "127.0.0.1", resolve),
+  );
+  const base = `http://127.0.0.1:${(app.server.address() as net.AddressInfo).port}`;
+  try {
+    for (const host of [
+      "192.168.50.7:3000",
+      "localhost.outside.example",
+      "user@localhost",
+      "localhost/path",
+    ]) {
+      assert.equal((await requestWithHost(base + "/health", host)).status, 403);
+    }
   } finally {
     await app.close();
     fs.rmSync(dataDir, { recursive: true, force: true });

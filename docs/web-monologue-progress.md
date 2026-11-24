@@ -53,8 +53,8 @@
 | 검증 | 결과 |
 | --- | --- |
 | 기존 데스크톱 엔진 테스트 | 31개 통과 |
-| 웹앱 로그인·세션·저장·HTTP·파일명·암호 마스킹 회귀 테스트 | 14개 통과 |
-| 전체 테스트 | 45개 통과 |
+| 웹앱 로그인·세션·저장·HTTP·파일명·암호 마스킹·LAN 회귀 테스트 | 16개 통과 |
+| 전체 테스트 | 47개 통과 |
 | 기존 앱 및 웹앱 TypeScript 검사 | 통과 |
 | 기존 Electron 번들 및 웹 서버·Worker 빌드 | 통과 |
 | 브라우저 JavaScript 구문 검사 | 통과 |
@@ -76,6 +76,8 @@ docker compose -f web-monologue/compose.yaml config --quiet
 이전 구현 단계의 Docker 이미지 빌드, Linux 테스트, 컨테이너 재시작 후 복구 및 브라우저 검증 결과는 [웹앱 검증 기록](../web-monologue/VERIFICATION.md)에 별도 보관했다. 실제 게임에서 사용자 원본 스크립트를 실행하는 동작과 장시간 자동사냥은 이번 자동 검증 범위에 포함하지 않는다.
 
 ## 실행과 데이터 보관
+
+후속 LAN 접속 요청에 따라 `WEB_ALLOWED_HOSTS`를 추가했다. 기본값은 localhost·루프백만 허용하며, 명시적으로 등록한 서버 LAN IP·호스트명도 처리할 수 있다. 기존 Origin 검사는 유지한다. Node용 `start-lan.ps1`, 같은 서브넷만 허용하는 Windows 방화벽 스크립트와 Compose용 `WEB_BIND_HOST`를 제공한다. 사용자가 선택한 범위는 같은 공유기·사내망이며 인터넷 공개는 포함하지 않는다. 자세한 명령은 [LAN 사용 안내](../web-monologue/README.md#같은-공유기사내망의-다른-pc에서-접속)를 참고한다.
 
 일반 실행·중지·포트 변경 절차는 [웹앱 사용 안내](../web-monologue/README.md)를 따른다. Docker 방식은 저장소 루트를 빌드 컨텍스트로 사용하고, Compose 데이터 볼륨에 캐릭터와 소스를 보관한다. Docker 없이 실행할 때 기본 데이터 위치는 `web-monologue/data/`다. 두 실행 방식의 저장 위치는 별개이며 자동으로 이동하지 않는다.
 
