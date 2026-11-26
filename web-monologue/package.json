@@ -1,6 +1,6 @@
 {
   "name": "iyagi-web-monologue",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "private": true,
   "description": "다중 캐릭터 백그라운드 혼잣말 웹앱",
   "scripts": {

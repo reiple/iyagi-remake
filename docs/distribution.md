@@ -2,7 +2,7 @@
 
 ## 받는 사람
 
-1. Windows x64 PC에서 배포 ZIP을 내려받고 **모두 압축 풀기**를 선택합니다. 0.3의 파일 이름은 `Iyagi-Mud-0.3.0-win-x64.zip`입니다.
+1. Windows x64 PC에서 배포 ZIP을 내려받고 **모두 압축 풀기**를 선택합니다. 0.4의 파일 이름은 `Iyagi-Mud-0.4.0-win-x64.zip`입니다. [GitHub 릴리스](https://github.com/reiple/iyagi-remake/releases/latest)
 2. 압축을 푼 폴더에서 `Iyagi Mud.exe`를 실행합니다. 같은 폴더의 DLL과 `resources`, `locales`가 필요하므로 실행 파일을 옮길 때는 폴더 전체를 옮기세요. Node.js와 npm은 필요하지 않습니다.
 3. 앱에서 **서버 연결**을 누릅니다. 자세한 사용법은 [프로젝트 README](../README.md)를 참고하세요.
 
@@ -26,7 +26,12 @@ npm run dist:win
 배포할 ZIP의 SHA-256을 아래 명령으로 구해 다운로드 링크와 함께 전달하면 받은 사람이 같은 명령으로 파일을 대조할 수 있습니다.
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\release\Iyagi-Mud-0.3.0-win-x64.zip
+Get-FileHash -Algorithm SHA256 .\release\Iyagi-Mud-0.4.0-win-x64.zip
 ```
 
-GitHub Releases를 이용할 때는 빌드에 사용한 커밋을 대상으로 릴리스를 만들고, ZIP을 릴리스 자산으로 첨부하세요. 릴리스 설명에 변경 사항과 SHA-256을 적으세요.
+## 릴리스마다 갱신할 문서
+
+1. `CHANGELOG.md`에 버전 항목을 추가해 데스크톱과 모노로그의 사용자 변경 사항을 기록합니다.
+2. `docs/releases/vX.Y.Z.md`에 해당 버전의 다운로드 또는 실행 방법, 업그레이드와 데이터 보관 방식, 실제로 수행한 검증과 결과를 기록합니다.
+3. 루트 README의 현재 버전, 루트와 모노로그 README의 버전 안내 링크, 사용 안내의 버전·파일명 예시를 갱신합니다.
+4. 빌드에 사용한 커밋을 `vX.Y.Z` 태그로 릴리스합니다. GitHub 릴리스 설명에 변경 사항, 버전 안내 링크, 검증 범위와 SHA-256을 넣고 ZIP 및 `.sha256` 파일을 첨부합니다.

@@ -2,9 +2,9 @@
 
 퇴마요새용 Windows x64 독립 클라이언트입니다. 이야기멀티 원본을 수정하거나 포함하지 않습니다.
 
-현재 버전: **0.3** · [버전별 변경점](CHANGELOG.md) · [전체 작업 현황과 구조](docs/project-status.md) · [혼잣말 사용 안내](docs/monologue-guide.md)
+현재 버전은 **0.4**입니다. [0.4 사용 및 배포 안내](docs/releases/v0.4.0.md) · [버전별 변경점](CHANGELOG.md) · [전체 작업 현황과 구조](docs/project-status.md) · [혼잣말 사용 안내](docs/monologue-guide.md)
 
-여러 캐릭터의 혼잣말을 브라우저에서 관리하려면 별도 [혼잣말 웹앱](web-monologue/README.md)을 사용하세요. Docker / Docker Compose로 실행하며 브라우저를 닫아도 컨테이너에서 접속과 실행을 유지합니다.
+여러 캐릭터의 혼잣말을 브라우저에서 관리하려면 [이야기 모노로그](web-monologue/README.md)를 사용하세요. Docker 또는 Docker Compose로 실행하며 브라우저를 닫아도 컨테이너에서 접속과 실행을 유지합니다.
 
 웹앱 구현, 로그인 순서와 파일명 오류 수정, 최신 검증 결과는 [웹앱 작업 기록](docs/web-monologue-progress.md)에 정리했습니다.
 
@@ -70,7 +70,9 @@ Compose는 단독 실행 예시와 별도의 데이터 볼륨을 사용합니다
 
 ## 실행
 
-Windows 배포 ZIP을 모두 풀고 `Iyagi Mud.exe`를 실행하세요. ZIP을 만드는 방법과 배포 절차는 [Windows 배포 안내](docs/distribution.md)를 참고하세요. 소스에서 개발할 때는 `npm run build` 후 `npm start`로 실행할 수 있습니다.
+GitHub에서 0.4 Windows 배포 ZIP을 받아 모두 풀고 `Iyagi Mud.exe`를 실행하세요. [v0.4.0 다운로드](https://github.com/reiple/iyagi-remake/releases/tag/v0.4.0) · [Windows 배포 안내](docs/distribution.md)
+
+소스에서 개발할 때는 `npm run build` 후 `npm start`로 실행할 수 있습니다.
 
 상단 **접속 → 서버 연결 → 퇴마요새**를 선택하면 `xmud.ddnsfree.com:6666`에 CP949로 접속합니다. **접속 → 프로필 관리**에서 서버 이름, 주소, 포트, 인코딩을 추가하거나 수정할 수 있습니다. 앱 버전은 왼쪽 앱 이름 아래와 **도움말 → 이야기 정보**에 표시됩니다.
 
@@ -80,7 +82,9 @@ Windows 배포 ZIP을 모두 풀고 `Iyagi Mud.exe`를 실행하세요. ZIP을 �
 
 - 화면의 일반 영역을 클릭하면 채팅 입력창에 포커스가 이동합니다. 텍스트 드래그 선택과 다른 입력칸·버튼 조작은 유지합니다.
 - **환경 설정 → 화면·전송 → 채팅 입력창 위치**에서 출력창 위/아래를 선택하고 저장하세요. 재실행 후에도 유지됩니다.
-- 채팅 입력창에서 Enter로 전송. ↑/↓로 세션 명령 기록을 탐색합니다.
+- 연결이 끊기면 Enter를 두 번 눌러 직전 서버에 다시 접속할 수 있습니다.
+- 채팅 입력창에서 Enter로 전송합니다. ↑·↓로 최근 명령 20개까지 탐색하고 ↑·Enter로 다시 보낼 수 있습니다.
+- 이야기멀티 전경색 표기 `$#155=114F안녕하세요$#155=7F`에서 `114F`는 밝은 노란색, `7F`는 기본 글자색입니다.
 - `보기|상태`는 두 명령을 순서대로 전송합니다. 기본 간격 150ms.
 - `보기|$,상태`는 추가 지연을 둡니다. $, 기본 500ms, 설정에서 변경 가능.
 - `$$`는 달러 문자 하나를 보냅니다. 비밀 입력에서는 매크로 문법을 해석하지 않습니다.
@@ -114,10 +118,12 @@ npm test
 npm run check
 npm run build
 npm start
-npm run pack -- --config.directories.output=release-v0.3.0
+npm run pack
 node scripts/ui-test.mjs
 node scripts/smoke.mjs
 ```
+
+`npm run pack`으로 만든 Windows 앱은 저장소의 `이야기 실행.cmd`에서 열 수 있습니다.
 
 이 작업 환경에는 npm이 없어 `.tools/package/bin/npm-cli.js`를 설치해 사용했습니다. 같은 환경에서는 `npm` 대신 `node .tools/package/bin/npm-cli.js`를 사용하세요. 네트워크가 제한된 실행 환경에서는 TCP 테스트와 의존성 다운로드에 네트워크 권한이 필요합니다.
 
