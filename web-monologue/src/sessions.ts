@@ -2,6 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { Connection } from "../../src/core/connection";
+import {
+  expandLegacyForeground,
+  legacyForegroundToSgr,
+} from "../../src/core/legacy-ansi";
 import { ScriptService } from "../../src/script/service";
 import { decodeSource } from "../../src/script/source";
 import { CharacterStore, type CharacterRecord } from "./store";
@@ -94,7 +98,7 @@ export class SessionManager {
   private create(record: CharacterRecord): Session {
     const connection = new Connection();
     const login = new Login(record.name, record.password, (text) =>
-      connection.send(text),
+      connection.send(text, false),
     );
     const s: Session = {
       record,
@@ -186,6 +190,7 @@ export class SessionManager {
       fileName: s.record.fileName,
       connected: s.connection.connected,
       connecting: !!s.connection.socket && !s.connection.connected,
+      connectionGeneration: s.connection.generation,
       connectionStatus: s.status,
       loginState: s.login.state,
       scriptState: s.script.state,
@@ -356,7 +361,12 @@ export class SessionManager {
   stop(id: string) {
     this.get(id).script.stop();
   }
-  send(id: string, text: unknown, secret: unknown = false) {
+  send(
+    id: string,
+    text: unknown,
+    secret: unknown = false,
+    generation?: unknown,
+  ) {
     const s = this.get(id);
     if (
       typeof text !== "string" ||
@@ -365,16 +375,32 @@ export class SessionManager {
       typeof secret !== "boolean"
     )
       throw Error("명령 입력이 올바르지 않습니다.");
-    if (secret || s.secret) {
+    if (
+      !s.connection.connected ||
+      (generation !== undefined && generation !== s.connection.generation)
+    )
+      throw Error("서버에 다시 연결한 뒤 명령을 보내세요.");
+    if (generation !== undefined && s.secret && !secret)
+      throw Error("서버가 비밀 입력을 요청했습니다. 입력 상태를 확인하세요.");
+    const hidden = secret || s.secret;
+    const ready = s.login.state === "ready";
+    const knownSecret = this.redact(s, text, false) !== text;
+    if (hidden) {
       s.script.stop();
       if (text && !s.secrets.includes(text)) s.secrets.push(text);
     }
-    if (s.login.state !== "ready") {
+    if (!ready) {
       s.login.manual();
       clearTimeout(s.timer);
     }
-    s.connection.send(text);
-    if (!secret && !s.secret) this.append(s, "\n> " + text + "\n");
+    const recordable = ready && !hidden && !knownSecret;
+    const command = recordable ? expandLegacyForeground(text) : text;
+    s.connection.send(command, recordable);
+    if (!hidden) {
+      const echo = recordable ? legacyForegroundToSgr(command) : text;
+      this.append(s, `\n> ${echo}${echo !== command ? "\x1b[39m" : ""}\n`);
+    }
+    return recordable;
   }
   answer(id: string, requestId: unknown, text: unknown) {
     const s = this.get(id);

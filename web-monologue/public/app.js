@@ -1,15 +1,15 @@
-"use strict";
+import { renderTerminalOutput } from "./terminal-output.mjs";
+
 const $ = (id) => document.getElementById(id);
+const historyLimit = 20;
 const state = {
   characters: [],
   busy: new Set(),
   scriptId: null,
-  textId: null,
+  textPanel: null,
+  commandHistories: new Map(),
   deleteId: null,
   polling: false,
-  reading: false,
-  answerId: null,
-  textRevision: -1,
 };
 const scriptNames = {
   idle: "준비",
@@ -301,6 +301,7 @@ $("delete-form").onsubmit = async (event) => {
   submit.disabled = true;
   try {
     await api(route(state.deleteId), undefined, "DELETE");
+    state.commandHistories.delete(state.deleteId);
     $("delete-dialog").close();
     toast("캐릭터를 삭제했습니다.");
     await refresh();
@@ -312,129 +313,327 @@ $("delete-form").onsubmit = async (event) => {
 };
 
 function openText(id) {
-  state.textId = id;
-  state.textRevision = -1;
-  state.answerId = null;
-  $("text-title").textContent = getCharacter(id).name + " · 텍스트 화면";
+  const character = getCharacter(id);
+  const panel = {
+    id,
+    character,
+    revision: -1,
+    reading: false,
+    answerId: null,
+    reconnectArmed: false,
+    reconnectPending: false,
+    manualSecret: false,
+    recalled: undefined,
+    inputRevision: 0,
+    composing: false,
+    compositionEnter: false,
+  };
+  state.textPanel = panel;
+  $("text-title").textContent = character.name + " · 텍스트 화면";
   $("terminal-output").textContent = "출력을 불러오는 중입니다…";
   $("command-input").value = "";
-  $("command-secret").checked = false;
-  $("command-input").type = "text";
   $("text-error").textContent = "";
   $("answer-form").hidden = true;
   $("login-help").hidden = true;
+  renderCommandControls(panel);
   $("text-dialog").showModal();
+  $("command-input").focus();
   void readOutput();
 }
 $("text-dialog").addEventListener("close", () => {
-  state.textId = null;
-  state.answerId = null;
+  state.textPanel = null;
   $("command-input").value = "";
   $("answer-text").value = "";
   $("terminal-output").textContent = "";
 });
-function plain(text) {
-  return text
-    .replace(/\x1b\][^\x07]*(?:\x07|\x1b\\)/g, "")
-    .replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, "")
-    .replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g, "")
-    .replace(/\r\n/g, "\n");
+function renderCommandControls(panel) {
+  const { character: c } = panel;
+  const secret = $("command-secret");
+  secret.checked = panel.manualSecret || c.secret;
+  secret.disabled = c.secret;
+  const input = $("command-input");
+  const inputType = secret.checked ? "password" : "text";
+  if (input.type !== inputType) input.type = inputType;
+  $("command-send").disabled = !c.connected;
+  let hint = "이 창을 닫아도 접속과 혼잣말 실행은 유지됩니다.";
+  if (c.connected && c.loginState === "ready" && !secret.checked) {
+    hint = `↑·↓ 최근 명령 · ${hint}`;
+  } else if (panel.reconnectPending || c.connecting) {
+    hint = "퇴마요새에 접속하는 중입니다.";
+  } else if (!c.connected && c.connectionGeneration > 0) {
+    hint = panel.reconnectArmed
+      ? `${c.name} 캐릭터로 재접속하려면 Enter를 한 번 더 누르세요.`
+      : "Enter를 두 번 누르면 현재 캐릭터로 다시 접속합니다.";
+  }
+  const label = $("command-hint");
+  if (label.textContent !== hint) label.textContent = hint;
+}
+function commandHistory(character) {
+  const { id, connectionGeneration } = character;
+  let history = state.commandHistories.get(id);
+  if (!history || history.generation !== connectionGeneration) {
+    history = {
+      generation: connectionGeneration,
+      entries: [],
+      pending: undefined,
+      queue: Promise.resolve(),
+    };
+    state.commandHistories.set(id, history);
+  }
+  return history;
 }
 async function readOutput() {
-  const id = state.textId;
-  if (!id || state.reading) return;
-  state.reading = true;
+  const panel = state.textPanel;
+  if (!panel || panel.reading) return;
+  panel.reading = true;
   try {
-    const result = await api(route(id, "output"), undefined, "GET");
-    if (state.textId !== id || !$("text-dialog").open) return;
+    const result = await api(route(panel.id, "output"), undefined, "GET");
+    if (state.textPanel !== panel || !$("text-dialog").open) return;
     const c = result.character;
+    const previous = panel.character;
+    if (
+      previous.connectionGeneration !== c.connectionGeneration ||
+      (previous.connected && !c.connected)
+    ) {
+      state.commandHistories.delete(panel.id);
+      panel.reconnectArmed = false;
+      panel.recalled = undefined;
+      panel.manualSecret = false;
+      panel.inputRevision++;
+      $("command-input").value = "";
+    }
+    if (c.secret) panel.manualSecret = true;
+    if (c.secret && !previous.secret && panel.recalled) {
+      panel.recalled = undefined;
+      $("command-input").value = "";
+    }
+    panel.character = c;
+    renderCommandControls(panel);
     $("text-status").textContent =
       `${c.connectionStatus} · ${loginNames[c.loginState]} · 혼잣말 ${scriptNames[c.scriptState] || c.scriptState}`;
     $("login-help").hidden = !c.connected || c.loginState === "ready";
     $("confirm-login").disabled = c.secret;
-    $("command-send").disabled = !c.connected;
-    if (state.textRevision !== c.revision) {
+    if (panel.revision !== c.revision) {
       const output = $("terminal-output");
-      output.textContent = plain(result.text) || "아직 수신한 출력이 없습니다.";
-      state.textRevision = c.revision;
+      if (!renderTerminalOutput(output, result.text))
+        output.textContent = "아직 수신한 출력이 없습니다.";
+      panel.revision = c.revision;
       if ($("auto-scroll").checked) output.scrollTop = output.scrollHeight;
-    }
-    if (c.secret) {
-      $("command-secret").checked = true;
-      $("command-input").type = "password";
     }
     $("answer-form").hidden = !c.pendingInput;
     if (c.pendingInput) {
       $("answer-prompt").textContent = c.pendingInput.prompt;
       $("answer-text").maxLength = c.pendingInput.max;
-      if (state.answerId !== c.pendingInput.id) {
+      if (panel.answerId !== c.pendingInput.id) {
         $("answer-text").value = "";
-        state.answerId = c.pendingInput.id;
+        panel.answerId = c.pendingInput.id;
       }
-    } else state.answerId = null;
+    } else panel.answerId = null;
   } catch (error) {
-    if (state.textId === id) $("text-error").textContent = error.message;
+    if (state.textPanel === panel) $("text-error").textContent = error.message;
   } finally {
-    state.reading = false;
+    panel.reading = false;
   }
 }
 $("command-secret").onchange = () => {
-  $("command-input").type = $("command-secret").checked ? "password" : "text";
+  const panel = state.textPanel;
+  if (!panel) return;
+  panel.manualSecret = $("command-secret").checked;
+  panel.recalled = undefined;
+  panel.inputRevision++;
+  if (!panel.manualSecret) $("command-input").value = "";
+  renderCommandControls(panel);
   $("command-input").focus();
 };
-$("command-form").onsubmit = async (event) => {
-  event.preventDefault();
-  if (!state.textId || event.isComposing) return;
-  const id = state.textId;
-  const text = $("command-input").value;
-  const secret = $("command-secret").checked;
-  $("text-error").textContent = "";
-  $("command-send").disabled = true;
-  try {
-    await api(route(id, "send"), { text, secret });
-    if (state.textId === id) {
-      $("command-input").value = "";
-      $("command-input").focus();
-    }
-    await readOutput();
-  } catch (error) {
-    if (state.textId === id) $("text-error").textContent = error.message;
-  } finally {
-    $("command-send").disabled = !getCharacter(state.textId)?.connected;
+$("command-input").oninput = () => {
+  const panel = state.textPanel;
+  if (!panel) return;
+  panel.inputRevision++;
+  panel.recalled = undefined;
+  if (panel.reconnectArmed) {
+    panel.reconnectArmed = false;
+    renderCommandControls(panel);
   }
 };
+$("command-form").onsubmit = (event) => {
+  event.preventDefault();
+  const panel = state.textPanel;
+  if (!panel?.character.connected || panel.composing || panel.compositionEnter)
+    return;
+  const input = $("command-input");
+  const text = input.value;
+  const secret = $("command-secret").checked;
+  const history = commandHistory(panel.character);
+  const source = panel.recalled;
+  const entry =
+    !secret && text && panel.character.loginState === "ready"
+      ? { text, accepted: false }
+      : undefined;
+  if (entry) history.pending = entry;
+  panel.recalled = undefined;
+  const revision = ++panel.inputRevision;
+  input.value = "";
+  $("text-error").textContent = "";
+  history.queue = history.queue.then(async () => {
+    try {
+      if (source && !source.accepted) return;
+      const { recordable } = await api(route(panel.id, "send"), {
+        text,
+        secret,
+        connectionGeneration: history.generation,
+      });
+      if (entry && recordable) {
+        entry.accepted = true;
+        const newest = history.entries.at(-1);
+        if (newest?.text === text) {
+          if (state.textPanel?.recalled === entry)
+            state.textPanel.recalled = newest;
+        } else {
+          history.entries.push(entry);
+          if (history.entries.length > historyLimit) history.entries.shift();
+        }
+      }
+      if (state.textPanel === panel) void readOutput();
+    } catch (error) {
+      if (state.textPanel === panel) {
+        $("text-error").textContent = error.message;
+        if (
+          !source &&
+          panel.inputRevision === revision &&
+          (!secret || $("command-secret").checked)
+        )
+          input.value = text;
+      }
+    } finally {
+      if (history.pending === entry) history.pending = undefined;
+      if (entry && !entry.accepted && state.textPanel?.recalled === entry) {
+        state.textPanel.recalled = undefined;
+        input.value = "";
+      }
+    }
+  });
+};
+async function reconnect(panel) {
+  const c = panel.character;
+  if (!c.connectionGeneration || c.connecting || panel.reconnectPending) return;
+  if (!panel.reconnectArmed) {
+    panel.reconnectArmed = true;
+    renderCommandControls(panel);
+    return;
+  }
+  panel.reconnectArmed = false;
+  panel.reconnectPending = true;
+  $("text-error").textContent = "";
+  renderCommandControls(panel);
+  try {
+    await api(route(panel.id, "connect"), {});
+    if (state.textPanel === panel) await readOutput();
+    void refresh();
+  } catch (error) {
+    if (state.textPanel === panel) $("text-error").textContent = error.message;
+  } finally {
+    panel.reconnectPending = false;
+    if (state.textPanel === panel) renderCommandControls(panel);
+  }
+}
 $("command-input").addEventListener("keydown", (event) => {
-  if (event.key === "Enter" && (event.isComposing || event.keyCode === 229))
+  const panel = state.textPanel;
+  if (!panel) return;
+  const composing =
+    panel.composing || event.isComposing || event.keyCode === 229;
+  if (event.key === "Enter") {
+    if (composing) {
+      panel.compositionEnter = true;
+      return;
+    }
     event.preventDefault();
+    if (panel.compositionEnter || event.repeat) return;
+    if (panel.character.connected) $("command-form").requestSubmit();
+    else void reconnect(panel);
+    return;
+  }
+  if (
+    composing ||
+    !panel.character.connected ||
+    $("command-secret").checked ||
+    (event.key !== "ArrowUp" && event.key !== "ArrowDown")
+  )
+    return;
+  event.preventDefault();
+  const { entries, pending } = commandHistory(panel.character);
+  const choices =
+    pending && pending.text !== entries.at(-1)?.text
+      ? [...entries, pending].slice(-historyLimit)
+      : entries;
+  if (!choices.length || (!panel.recalled && event.key === "ArrowDown")) return;
+  const current = panel.recalled
+    ? choices.indexOf(panel.recalled)
+    : choices.length;
+  const next = Math.max(0, current + (event.key === "ArrowUp" ? -1 : 1));
+  panel.recalled = choices[next];
+  panel.inputRevision++;
+  $("command-input").value = panel.recalled?.text ?? "";
+});
+$("command-input").addEventListener("compositionstart", () => {
+  if (state.textPanel) state.textPanel.composing = true;
+});
+$("command-input").addEventListener("compositionend", () => {
+  if (state.textPanel) state.textPanel.composing = false;
+});
+$("command-input").addEventListener("keyup", (event) => {
+  const panel = state.textPanel;
+  if (!panel?.compositionEnter || event.key !== "Enter") return;
+  panel.compositionEnter = false;
+  if (!panel.composing && panel.character.connected)
+    $("command-form").requestSubmit();
+});
+$("command-input").addEventListener("blur", () => {
+  if (!state.textPanel) return;
+  state.textPanel.composing = false;
+  state.textPanel.compositionEnter = false;
+});
+$("terminal-output").addEventListener("keydown", (event) => {
+  const panel = state.textPanel;
+  if (
+    !panel ||
+    panel.character.connected ||
+    event.key !== "Enter" ||
+    event.isComposing
+  )
+    return;
+  event.preventDefault();
+  if (!event.repeat) void reconnect(panel);
 });
 $("answer-form").onsubmit = async (event) => {
   event.preventDefault();
-  if (!state.textId || !state.answerId) return;
-  const id = state.textId,
-    inputId = state.answerId,
-    submit = event.submitter;
+  const panel = state.textPanel;
+  if (!panel?.answerId) return;
+  const submit = event.submitter;
   submit.disabled = true;
   try {
-    await api(route(id, "answer"), {
-      id: inputId,
+    await api(route(panel.id, "answer"), {
+      id: panel.answerId,
       text: $("answer-text").value,
     });
-    if (state.textId === id) $("answer-text").value = "";
-    await readOutput();
+    if (state.textPanel === panel) {
+      $("answer-text").value = "";
+      await readOutput();
+    }
   } catch (error) {
-    if (state.textId === id) $("text-error").textContent = error.message;
+    if (state.textPanel === panel) $("text-error").textContent = error.message;
   } finally {
     submit.disabled = false;
   }
 };
 $("confirm-login").onclick = async () => {
-  if (!state.textId) return;
+  const panel = state.textPanel;
+  if (!panel) return;
   try {
-    await api(route(state.textId, "confirm-login"), {});
-    await readOutput();
+    await api(route(panel.id, "confirm-login"), {});
+    if (state.textPanel === panel) await readOutput();
     await refresh();
   } catch (error) {
-    $("text-error").textContent = error.message;
+    if (state.textPanel === panel) $("text-error").textContent = error.message;
   }
 };
 void refresh();
