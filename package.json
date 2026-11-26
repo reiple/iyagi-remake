@@ -1,6 +1,6 @@
 {
   "name": "iyagi-mud",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "퇴마요새 머드 클라이언트",
   "author": "Iyagi Mud contributors",
