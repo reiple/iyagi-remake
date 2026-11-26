@@ -146,7 +146,7 @@ test("LAN 주소는 명시적으로 허용하고 같은 Origin의 API 요청만 
     dataDir,
     workerPath: "unused",
     publicDir: path.resolve(__dirname, "../public"),
-    allowedHosts: ["192.168.50.7", "MUD-PC"],
+    allowedHosts: ["192.168.50.7", "MUD-PC", "iyagi.ondigitalocean.app"],
   });
   await new Promise<void>((resolve) =>
     app.server.listen(0, "127.0.0.1", resolve),
@@ -178,9 +178,42 @@ test("LAN 주소는 명시적으로 허용하고 같은 Origin의 API 요청만 
       403,
     );
     assert.equal((await request(lanHost, `http://${lanHost}`)).status, 201);
+    assert.equal(
+      (
+        await requestWithHost(base + "/", lanHost, undefined, `https://${lanHost}`)
+      ).status,
+      200,
+    );
+    assert.equal(
+      (
+        await requestWithHost(
+          base + "/api/characters",
+          "iyagi.ondigitalocean.app",
+          { name: "HTTPS검증", password: "synthetic-password" },
+          "https://iyagi.ondigitalocean.app",
+        )
+      ).status,
+      201,
+    );
+    assert.equal(
+      (await request(lanHost, "https://outside.example")).status,
+      403,
+    );
+    assert.equal(
+      (
+        await requestWithHost(
+          base + "/api/characters",
+          "localhost",
+          undefined,
+          "https://localhost",
+        )
+      ).status,
+      403,
+    );
     const response = await requestWithHost(base + "/api/characters", lanHost);
     const { characters } = JSON.parse(response.text);
     assert.equal(characters[0].name, "LAN검증");
+    assert.equal(characters[1].name, "HTTPS검증");
     assert.ok(!JSON.stringify(characters).includes("synthetic-password"));
     assert.equal((await fetch(base + "/health")).status, 200);
   } finally {
