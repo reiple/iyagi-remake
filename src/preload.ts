@@ -12,6 +12,7 @@ const allowed = [
   "load",
   "save",
   "save-profiles",
+  "reconnect",
   "send",
   "secret",
   "stop",

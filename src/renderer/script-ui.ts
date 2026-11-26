@@ -10,6 +10,7 @@ export function setupScriptUi() {
   let paused = false;
   let inputId = 0;
   let busy = false;
+  let editorOpenCount = 0;
   const inputDialog = $<HTMLDialogElement>("script-input-dialog");
   editor.value =
     '#포함 <I.H>\n\n여기부터()\n{\n    보내기("보기|");\n    지연(100);\n    글월쓰기("혼잣말 실행을 마쳤습니다.");\n}\n';
@@ -52,7 +53,10 @@ export function setupScriptUi() {
         refresh();
       });
   };
-  $("script-open-panel").onclick = () => dialog.showModal();
+  $("script-open-panel").onclick = () => {
+    dialog.showModal();
+    editorOpenCount++;
+  };
   $("script-close").onclick = () => dialog.close();
   editor.oninput = () => {
     compiled = false;
@@ -92,7 +96,9 @@ export function setupScriptUi() {
     $("script-state").textContent = "번역 완료";
   });
   $("script-run").onclick = wrap(async () => {
+    const openCount = editorOpenCount;
     await ask("script-run", editor.value);
+    if (editorOpenCount === openCount) dialog.close();
   });
   $("script-pause").onclick = () => void ask("script-pause").catch(() => {});
   $("script-resume").onclick = () => void ask("script-resume").catch(() => {});

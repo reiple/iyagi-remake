@@ -1,6 +1,7 @@
 import net from "node:net";
 import { EventEmitter } from "node:events";
 import iconv from "iconv-lite";
+import { encodeCommand, LegacyAnsiDecoder } from "./legacy-ansi";
 import { TelnetParser, escapeIac } from "./telnet";
 export class Connection extends EventEmitter {
   socket?: net.Socket;
@@ -13,7 +14,7 @@ export class Connection extends EventEmitter {
     const id = ++this.generation;
     this.encoding = encoding;
     this.parser = new TelnetParser();
-    const decoder = iconv.getDecoder(encoding);
+    const decoder = new LegacyAnsiDecoder(encoding);
     const s = net.createConnection({ host, port });
     this.socket = s;
     this.emit("status", "접속 중");
@@ -51,11 +52,15 @@ export class Connection extends EventEmitter {
       this.emit("status", "연결 종료");
     });
   }
-  send(text: string) {
+  send(text: string, legacyAnsi = true) {
     if (!this.connected || !this.socket) throw Error("먼저 서버에 연결하세요.");
     if (this.socket.writableLength > 1024 * 1024)
       throw Error("서버 전송 대기량이 너무 큽니다.");
-    this.socket.write(escapeIac(iconv.encode(text + "\r\n", this.encoding)));
+    const line = text + "\r\n";
+    const bytes = legacyAnsi
+      ? encodeCommand(line, this.encoding)
+      : iconv.encode(line, this.encoding);
+    this.socket.write(escapeIac(bytes));
   }
   sendScriptByte(byte:number){
     if(!this.connected||!this.socket)throw Error("서버에 연결되어 있지 않습니다.");

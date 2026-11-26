@@ -1,3 +1,5 @@
+import { legacyForegroundColor } from "./legacy-ansi";
+
 export type Action = { text: string } | { delay: number };
 export function expand(
   input: string,
@@ -33,7 +35,15 @@ export function expand(
       result.push({ delay });
       i++;
     } else {
-      const m = input.slice(i).match(/^\$([AS](?:10|[1-9]))(?!\d)/);
+      const remaining = input.slice(i);
+      const colorCode = remaining.match(/^\$#155=(\d{1,3})F/);
+      const color = colorCode ? legacyForegroundColor(colorCode[1]) : undefined;
+      if (colorCode && color !== undefined) {
+        text += `\x9b=${color}F`;
+        i += colorCode[0].length - 1;
+        continue;
+      }
+      const m = remaining.match(/^\$([AS](?:10|[1-9]))(?!\d)/);
       if (!m) {
         text += "$";
         continue;
