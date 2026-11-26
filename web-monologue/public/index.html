@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="dark" />
     <title>이야기 · 혼잣말 관리</title>
     <link rel="stylesheet" href="/style.css" />
-    <script src="/app.js" defer></script>
+    <script src="/app.js" type="module"></script>
   </head>
   <body>
     <header class="topbar">
@@ -265,7 +265,7 @@
             전송 <span aria-hidden="true">↵</span>
           </button>
         </div>
-        <p class="terminal-hint">
+        <p id="command-hint" class="terminal-hint" aria-live="polite">
           이 창을 닫아도 접속과 혼잣말 실행은 유지됩니다.
         </p>
       </form>

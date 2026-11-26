@@ -11,10 +11,27 @@ export function legacyForegroundColor(value: string): number | undefined {
   if (foregroundSgr[color] !== undefined) return color;
 }
 
+export function expandLegacyForeground(text: string): string {
+  return text.replace(/(\${1,2})#155=(\d{1,3})F/g, (token, dollars, value) => {
+    const color = legacyForegroundColor(value);
+    if (color === undefined) return token;
+    return dollars === "$$" ? token.slice(1) : `\x9b=${color}F`;
+  });
+}
+
+const foregroundSequence = /\x9b=(\d{1,3})F/g;
+
+export function legacyForegroundToSgr(text: string): string {
+  return text.replace(foregroundSequence, (token, value) => {
+    const color = legacyForegroundColor(value);
+    return color === undefined ? token : `\x1b[${foregroundSgr[color]}m`;
+  });
+}
+
 export function encodeCommand(text: string, encoding: string): Buffer {
   const parts: Buffer[] = [];
   let start = 0;
-  for (const match of text.matchAll(/\x9b=(\d{1,3})F/g)) {
+  for (const match of text.matchAll(foregroundSequence)) {
     const color = legacyForegroundColor(match[1]);
     if (color === undefined) continue;
     parts.push(

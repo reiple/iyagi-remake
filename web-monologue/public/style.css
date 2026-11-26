@@ -758,6 +758,54 @@ dialog::backdrop {
   overflow-y: auto;
   tab-size: 4;
 }
+.terminal-fg-30 {
+  color: #2e3436;
+}
+.terminal-fg-31 {
+  color: #cc0000;
+}
+.terminal-fg-32 {
+  color: #4e9a06;
+}
+.terminal-fg-33 {
+  color: #c4a000;
+}
+.terminal-fg-34 {
+  color: #3465a4;
+}
+.terminal-fg-35 {
+  color: #75507b;
+}
+.terminal-fg-36 {
+  color: #06989a;
+}
+.terminal-fg-37 {
+  color: #d3d7cf;
+}
+.terminal-fg-90 {
+  color: #555753;
+}
+.terminal-fg-91 {
+  color: #ef2929;
+}
+.terminal-fg-92 {
+  color: #8ae234;
+}
+.terminal-fg-93 {
+  color: #fce94f;
+}
+.terminal-fg-94 {
+  color: #729fcf;
+}
+.terminal-fg-95 {
+  color: #ad7fa8;
+}
+.terminal-fg-96 {
+  color: #34e2e2;
+}
+.terminal-fg-97 {
+  color: #eeeeec;
+}
 .command-form,
 .answer-form {
   flex-shrink: 0;

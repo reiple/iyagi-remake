@@ -126,8 +126,15 @@ export function createApp(options: AppOptions) {
               diagnostics: manager.configureScript(id, body as ScriptUpload),
             });
           case "send":
-            manager.send(id, body.text, body.secret);
-            break;
+            return json(200, {
+              ok: true,
+              recordable: manager.send(
+                id,
+                body.text,
+                body.secret,
+                body.connectionGeneration,
+              ),
+            });
           case "answer":
             manager.answer(id, body.id, body.text);
             break;
@@ -139,6 +146,7 @@ export function createApp(options: AppOptions) {
       const staticFiles: Record<string, [string, string]> = {
         "/": ["index.html", "text/html"],
         "/app.js": ["app.js", "text/javascript"],
+        "/terminal-output.mjs": ["terminal-output.mjs", "text/javascript"],
         "/style.css": ["style.css", "text/css"],
       };
       const file = staticFiles[url.pathname];
