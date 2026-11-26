@@ -30,12 +30,17 @@ async function request(a: string, p?: unknown) {
 let settings: Settings;
 let connected = false;
 let connecting = false;
+let lastProfile: Profile | undefined;
+let reconnectArmed = false;
+let reconnectPending = false;
 let remoteSecret = false;
 let composing = false;
 let compositionEnter = false;
+const historyLimit = 20;
 let history: string[] = [];
-let position = 0;
-let draft = "";
+let pendingHistory: { text: string } | undefined;
+let position: number | undefined;
+let commandRevision = 0;
 let edit: Settings;
 const term = new Terminal({
   fontFamily: "Consolas, monospace",
@@ -55,6 +60,12 @@ const fit = new FitAddon();
 term.loadAddon(fit);
 term.open($("terminal"));
 term.attachCustomKeyEventHandler((e) => {
+  if (e.type === "keydown" && e.key === "Enter" && !connected && !e.isComposing &&
+      !composing && !document.querySelector("dialog[open]")) {
+    e.preventDefault();
+    if (!e.repeat) reconnect();
+    return false;
+  }
   if (e.ctrlKey && e.shiftKey && e.code === "KeyC") {
     navigator.clipboard.writeText(term.getSelection()).catch(() => {});
     return false;
@@ -102,24 +113,63 @@ function apply() {
   );
 }
 async function send(text: string) {
+  const sessionHistory = history;
   const hidden = secret();
-  await request("send", { text, secret: hidden });
-  if (!hidden && text) {
-    if (history.at(-1) !== text) history.push(text);
-    history = history.slice(-200);
-    position = history.length;
+  const pending = connected && !hidden && text ? { text } : undefined;
+  if (pending) pendingHistory = pending;
+  let recordable: boolean;
+  try {
+    recordable = await request("send", { text, secret: hidden });
+  } finally {
+    if (pendingHistory === pending) pendingHistory = undefined;
   }
-  message(hidden ? "비밀 입력을 전송했습니다." : "명령을 전송했습니다.");
+  if (history !== sessionHistory) return;
+  if (recordable && text && history.at(-1) !== text) {
+    history.push(text);
+    if (history.length > historyLimit) {
+      history.shift();
+      if (position !== undefined) position--;
+    }
+  }
+  message(recordable ? "명령을 전송했습니다." : "비밀 입력을 전송했습니다.");
+}
+function reconnect() {
+  if (connecting || reconnectPending) return;
+  if (!lastProfile) {
+    message("접속 메뉴에서 서버를 선택하세요.");
+    return;
+  }
+  if (!reconnectArmed) {
+    reconnectArmed = true;
+    message(`${lastProfile.name} 서버에 다시 접속하려면 Enter를 한 번 더 누르세요.`);
+    return;
+  }
+  reconnectArmed = false;
+  reconnectPending = true;
+  message(`${lastProfile.name} 서버에 다시 접속하는 중입니다.`);
+  void request("reconnect")
+    .catch(() => {})
+    .finally(() => { reconnectPending = false; });
 }
 $("command-form").onsubmit = (e) => {
   e.preventDefault();
   if (composing || compositionEnter) return;
-  const value = input("command").value;
-  void send(value)
-    .then(() => {
-      if (input("command").value === value) input("command").value = "";
-    })
-    .catch(() => {});
+  if (!connected) {
+    message(connecting ? "접속 중입니다." : "먼저 서버에 연결하세요.");
+    return;
+  }
+  const command = input("command");
+  const value = command.value;
+  const revision = ++commandRevision;
+  command.value = "";
+  position = undefined;
+  void send(value).catch(() => {
+    if (commandRevision === revision) command.value = value;
+  });
+};
+input("command").oninput = () => {
+  commandRevision++;
+  reconnectArmed = false;
 };
 input("command").addEventListener("compositionstart", () => (composing = true));
 input("command").addEventListener("compositionend", () => {
@@ -133,20 +183,26 @@ input("command").onkeydown = (e) => {
       return;
     }
     e.preventDefault();
-    if (!e.repeat && !compositionEnter)
-      $<HTMLFormElement>("command-form").requestSubmit();
+    if (!e.repeat && !compositionEnter) {
+      if (connected) $<HTMLFormElement>("command-form").requestSubmit();
+      else reconnect();
+    }
     return;
   }
   if (e.isComposing || composing) return;
   if (!secret() && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
     e.preventDefault();
-    if (position === history.length) draft = input("command").value;
-    position = Math.max(
+    const pending = pendingHistory?.text;
+    const historySize = history.length + (pending && pending !== history.at(-1) ? 1 : 0);
+    if (!historySize || (position === undefined && e.key === "ArrowDown")) return;
+    const next = Math.max(
+      historySize - historyLimit,
       0,
-      Math.min(history.length, position + (e.key === "ArrowUp" ? -1 : 1)),
+      (position ?? historySize) + (e.key === "ArrowUp" ? -1 : 1),
     );
-    input("command").value =
-      position === history.length ? draft : history[position];
+    position = next < historySize ? next : undefined;
+    input("command").value = position === undefined ? "" : history[position] ?? pending ?? "";
+    commandRevision++;
   }
 };
 input("command").onkeyup = (e) => {
@@ -185,6 +241,7 @@ $("log").onclick = () =>
 window.mud.subscribe((e) => {
   if (e.type === "open-profiles") openProfiles(e.value);
   if (e.type === "profile-connected") {
+    lastProfile = e.value;
     displayProfile(e.value);
     input("secret").checked = false;
     updateSecret();
@@ -193,24 +250,29 @@ window.mud.subscribe((e) => {
   if (e.type === "error") message(e.value);
   if (e.type === "secret") {
     remoteSecret = e.value;
+    if (remoteSecret) pendingHistory = undefined;
     updateSecret();
   }
   if (e.type === "triggers") input("triggers").checked = e.value;
   if (e.type === "log") $("log").textContent = "갈무리 시작";
   if (e.type === "status") {
+    reconnectArmed = false;
     connected = e.value === "연결됨";
     connecting = e.value === "접속 중";
     $("status").textContent = e.value;
     $("dot").classList.toggle("connected", connected);
     if (e.value === "연결 종료") {
       history = [];
-      position = 0;
+      pendingHistory = undefined;
+      position = undefined;
       input("command").value = "";
+      commandRevision++;
     }
     if (connected) {
       term.reset();
       input("command").focus();
       resize();
+      message("서버에 연결했습니다.");
     }
     if (e.value.startsWith("오류")) message(e.value);
   }
@@ -357,6 +419,11 @@ window.addEventListener("keydown", (e) => {
     return;
   }
   if (document.querySelector("dialog[open]")) return;
+  if (e.key === "Enter" && !connected && !e.defaultPrevented && e.target === document.body) {
+    e.preventDefault();
+    if (!e.repeat) reconnect();
+    return;
+  }
   if (e.key === "F8" && !e.altKey && !e.shiftKey && !e.ctrlKey) {
     e.preventDefault();
     openSettings();

@@ -112,19 +112,23 @@ app.whenReady().then(() => {
       sandbox: true,
     },
   });
+  let lastProfile: Profile | undefined;
+  function connectProfile(profile: Profile) {
+    if (connection.socket) return false;
+    stop();
+    manualSecret = false;
+    lastProfile = profile;
+    notify("profile-connected", profile);
+    connection.connect(profile.host, profile.port, profile.encoding);
+    return true;
+  }
   function updateMenu() {
     Menu.setApplicationMenu(Menu.buildFromTemplate([
       { label: "접속(&C)", submenu: [
         { id: "connect-profiles", label: "서버 연결", enabled: !connection.socket, submenu: profiles.map((profile, index) => ({
           id: `connect-profile-${index}`,
           label: profile.name.replaceAll("&", "&&"),
-          click: () => {
-            if (connection.socket) return;
-            stop();
-            manualSecret = false;
-            notify("profile-connected", profile);
-            connection.connect(profile.host, profile.port, profile.encoding);
-          },
+          click: () => connectProfile(profile),
         })) },
         { id: "disconnect-profile", label: "연결 종료", enabled: !!connection.socket, click: () => connection.disconnect() },
         { type: "separator" },
@@ -216,6 +220,8 @@ app.whenReady().then(() => {
       }
       case "load":
         return { settings, warning, version, profile: profiles[0] };
+      case "reconnect":
+        return lastProfile ? connectProfile(lastProfile) : false;
       case "save-profiles": {
         const next = validateProfiles(payload);
         fs.writeFileSync(profilesPath + ".tmp", JSON.stringify(next, null, 2), "utf8");
@@ -248,11 +254,10 @@ app.whenReady().then(() => {
         if (!connection.connected) throw Error("먼저 서버에 연결하세요.");
         if (payload.secret || serverSecret) {
           stop();
-          connection.send(payload.text);
-        } else
-          queue.enqueue(
-            expand(payload.text, settings.bindings, settings.delay),
-          );
+          connection.send(payload.text, false);
+          return false;
+        }
+        queue.enqueue(expand(payload.text, settings.bindings, settings.delay));
         return true;
       }
       case "secret":

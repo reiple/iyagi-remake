@@ -39,6 +39,20 @@ test("macro expansion, escaping, delay and cycle bound", () => {
   assert.throws(() => expand("$A1", { A1: "$A1" }, 500));
   assert.throws(() => expand("x|".repeat(1001), {}, 500));
 });
+test("outgoing command macros expand Iyagi colors and preserve escaped dollars", () => {
+  assert.deepEqual(
+    expand(
+      "$A1|$$#155=12F|$#155=999F",
+      { A1: "$#155=114F안녕하세요$#155=7F" },
+      0,
+    ),
+    [
+      { text: "\x9b=14F안녕하세요\x9b=7F" },
+      { text: "$#155=12F" },
+      { text: "$#155=999F" },
+    ],
+  );
+});
 test("queue stop cancels pending commands", async () => {
   const sent: string[] = [];
   const q = new CommandQueue((x) => sent.push(x), 20);
